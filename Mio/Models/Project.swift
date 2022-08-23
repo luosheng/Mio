@@ -7,6 +7,7 @@
 
 import Foundation
 
-struct Project: Codable {
+struct Project: Codable, Identifiable {
+  var id: UUID
   var name: String
 }
