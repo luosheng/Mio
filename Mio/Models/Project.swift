@@ -14,8 +14,9 @@ class Project: Codable, Identifiable, LocalProcessDelegate {
   var name: String
   var command: String
   var directory: String?
+  var history: [ArraySlice<UInt8>] = []
   
-  var dataPublisher: PassthroughSubject<ArraySlice<UInt8>, Never>
+  var dataPublisher: PassthroughSubject<ArraySlice<UInt8>, Never> = PassthroughSubject()
   
   private enum CodingKeys : String, CodingKey {
     case id, name, command, directory
@@ -26,8 +27,6 @@ class Project: Codable, Identifiable, LocalProcessDelegate {
     self.name = name
     self.command = command
     self.directory = directory
-    
-    self.dataPublisher = PassthroughSubject()
   }
   
   convenience init(name: String, command: String) {
@@ -40,8 +39,6 @@ class Project: Codable, Identifiable, LocalProcessDelegate {
     name = try container.decode(String.self, forKey: .name)
     command = try container.decode(String.self, forKey: .command)
     directory = try container.decode(String?.self, forKey: .directory)
-    
-    self.dataPublisher = PassthroughSubject()
   }
   
   func run() {
@@ -52,11 +49,14 @@ class Project: Codable, Identifiable, LocalProcessDelegate {
     process.startProcess(executable: ShellService.shared.shellPath, args: ["-l", "-c", command], environment: nil, execName: nil)
   }
   
+  // MARK: - LocalProcessDelegate
+  
   func processTerminated(_ source: LocalProcess, exitCode: Int32?) {
     print("process terminated")
   }
   
   func dataReceived(slice: ArraySlice<UInt8>) {
+    history.append(slice)
     self.dataPublisher.send(slice)
     print(slice)
   }

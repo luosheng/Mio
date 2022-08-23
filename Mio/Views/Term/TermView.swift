@@ -10,8 +10,9 @@ import SwiftTerm
 import Combine
 
 struct TermView: NSViewRepresentable {
-  var didReceivedData: PassthroughSubject<ArraySlice<UInt8>, Never>?
-  @State private var cancellable: AnyCancellable? = nil
+  @State var project: Project
+  @State private var cancellable: AnyCancellable?
+  @State private var historyCancellable: AnyCancellable?
   
   func makeCoordinator() -> Coordinator {
     Coordinator()
@@ -22,12 +23,13 @@ struct TermView: NSViewRepresentable {
   }
   
   func updateNSView(_ nsView: TerminalView, context: Context) {
-    if (didReceivedData != nil) {
-      DispatchQueue.main.async {
-        self.cancellable = didReceivedData?.sink(receiveValue: { byteArray in
-          nsView.feed(byteArray: byteArray)
-        })
-      }
+    DispatchQueue.main.async {
+      self.cancellable = project.dataPublisher.sink(receiveValue: { byteArray in
+        nsView.feed(byteArray: byteArray)
+      })
+      self.historyCancellable = project.history.publisher.sink(receiveValue: { byteArray in
+        nsView.feed(byteArray: byteArray)
+      })
     }
   }
 }
