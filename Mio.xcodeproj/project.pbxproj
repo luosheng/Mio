@@ -18,6 +18,7 @@
 		B3BA457F28B4B6C7002F11C2 /* SidebarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BA457E28B4B6C7002F11C2 /* SidebarItem.swift */; };
 		B3BA458228B4B7ED002F11C2 /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BA458128B4B7ED002F11C2 /* ProjectView.swift */; };
 		B3BA458528B4C0FD002F11C2 /* SwiftTerm in Frameworks */ = {isa = PBXBuildFile; productRef = B3BA458428B4C0FD002F11C2 /* SwiftTerm */; };
+		B3BA458828B4C12B002F11C2 /* TermView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BA458728B4C12B002F11C2 /* TermView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		B3BA457C28B4AF38002F11C2 /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
 		B3BA457E28B4B6C7002F11C2 /* SidebarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItem.swift; sourceTree = "<group>"; };
 		B3BA458128B4B7ED002F11C2 /* ProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
+		B3BA458728B4C12B002F11C2 /* TermView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 		B3BA457A28B4AF1F002F11C2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B3BA458628B4C121002F11C2 /* Term */,
 				B3BA458028B4B7DB002F11C2 /* Project */,
 				B3BA457B28B4AF24002F11C2 /* Sidebar */,
 			);
@@ -127,6 +130,14 @@
 				B3BA458128B4B7ED002F11C2 /* ProjectView.swift */,
 			);
 			path = Project;
+			sourceTree = "<group>";
+		};
+		B3BA458628B4C121002F11C2 /* Term */ = {
+			isa = PBXGroup;
+			children = (
+				B3BA458728B4C12B002F11C2 /* TermView.swift */,
+			);
+			path = Term;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,6 +221,7 @@
 				B33B298428B4A903009CD8D7 /* MioApp.swift in Sources */,
 				B35BCCD128B4ACB200F1779E /* Project.swift in Sources */,
 				B3BA457F28B4B6C7002F11C2 /* SidebarItem.swift in Sources */,
+				B3BA458828B4C12B002F11C2 /* TermView.swift in Sources */,
 				B3BA457D28B4AF38002F11C2 /* Sidebar.swift in Sources */,
 				B3BA458228B4B7ED002F11C2 /* ProjectView.swift in Sources */,
 				B3BA457728B4AD8D002F11C2 /* Mock.swift in Sources */,

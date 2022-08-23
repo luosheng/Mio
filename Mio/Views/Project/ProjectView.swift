@@ -11,7 +11,10 @@ struct ProjectView: View {
   var project: Project
   
   var body: some View {
-    Text(project.name)
+    VStack {
+      TermView()
+    }
+      .navigationTitle(project.name)
   }
 }
 
