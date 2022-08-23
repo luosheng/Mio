@@ -9,14 +9,25 @@ import SwiftUI
 
 struct Sidebar: View {
   @EnvironmentObject var store: Store
+  @State private var presentingAddProject = false
   
   var body: some View {
-    List {
-      ForEach(store.projects) { p in
-        NavigationLink(destination: ProjectView(project: p)) {
-          SidebarItem(project: p)
+    VStack {
+      List {
+        ForEach(store.projects) { p in
+          NavigationLink(destination: ProjectView(project: p)) {
+            SidebarItem(project: p)
+          }
         }
       }
+      HStack {
+        Button {
+          presentingAddProject = true
+        } label: {
+          Image(systemName: "plus")
+        }
+      }
+      .padding()
     }
     .background(.background)
     .toolbar {
@@ -27,6 +38,9 @@ struct Sidebar: View {
           Image(systemName: "sidebar.squares.leading")
         }
       }
+    }
+    .sheet(isPresented: $presentingAddProject) {
+      ProjectDetailView(presented: $presentingAddProject)
     }
   }
 }
