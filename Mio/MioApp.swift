@@ -13,5 +13,6 @@ struct MioApp: App {
     WindowGroup {
       ContentView().environmentObject(Store.shared)
     }
+    .windowToolbarStyle(.unifiedCompact)
   }
 }
