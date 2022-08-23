@@ -14,7 +14,17 @@ struct ProjectView: View {
     VStack {
       TermView()
     }
-      .navigationTitle(project.name)
+    .navigationTitle(project.name)
+    .toolbar {
+      ToolbarItemGroup {
+        Spacer()
+        Button {
+          
+        } label: {
+          Image(systemName: "play.circle")
+        }
+      }
+    }
   }
 }
 
