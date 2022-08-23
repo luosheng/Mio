@@ -11,3 +11,5 @@ let mockProjects = [
   Project(name: "Project A"),
   Project(name: "Project B")
 ]
+
+let mockStore = Store(projects: mockProjects)
