@@ -26,7 +26,7 @@ class Project: Identifiable, LocalProcessDelegate {
   
   func run() {
     let process = LocalProcess(delegate: self)
-    process.startProcess(executable: "/bin/zsh", args: ["-c", command], environment: nil, execName: nil)
+    process.startProcess(executable: "/bin/zsh", args: ["-l", "-c", command], environment: nil, execName: nil)
   }
   
   func processTerminated(_ source: LocalProcess, exitCode: Int32?) {
