@@ -8,13 +8,19 @@
 import SwiftUI
 
 struct Sidebar: View {
+  @EnvironmentObject var store: Store
+  
   var body: some View {
-    Text("Hello, World!")
+    List {
+      ForEach(store.projects) { p in
+        SidebarItem(project: p)
+      }
+    }
   }
 }
 
 struct Sidebar_Previews: PreviewProvider {
   static var previews: some View {
-    Sidebar()
+    Sidebar().environmentObject(mockStore)
   }
 }
