@@ -12,7 +12,7 @@ struct ProjectView: View {
   
   var body: some View {
     VStack {
-      TermView()
+      TermView(didReceivedData: project.dataPublisher)
     }
     .navigationTitle(project.name)
     .toolbar {

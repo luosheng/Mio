@@ -7,30 +7,34 @@
 
 import Foundation
 import SwiftTerm
+import Combine
 
-class Project: Codable, Identifiable, LocalProcessDelegate {
-  func processTerminated(_ source: LocalProcess, exitCode: Int32?) {
-    print("process terminated")
-  }
-  
-  func dataReceived(slice: ArraySlice<UInt8>) {
-    print(slice)
-  }
-  
-  func getWindowSize() -> winsize {
-    return winsize()
-  }
-  
+class Project: Identifiable, LocalProcessDelegate {
   var id: UUID
   var name: String
+  var dataPublisher: PassthroughSubject<ArraySlice<UInt8>, Never>
   
   init(name: String) {
     self.id = UUID()
     self.name = name
+    self.dataPublisher = PassthroughSubject()
   }
   
   func run() {
     let process = LocalProcess(delegate: self)
     process.startProcess(executable: "/bin/zsh", args: ["-c", "printenv"], environment: nil, execName: nil)
+  }
+  
+  func processTerminated(_ source: LocalProcess, exitCode: Int32?) {
+    print("process terminated")
+  }
+  
+  func dataReceived(slice: ArraySlice<UInt8>) {
+    self.dataPublisher.send(slice)
+    print(slice)
+  }
+  
+  func getWindowSize() -> winsize {
+    return winsize()
   }
 }

@@ -7,13 +7,27 @@
 
 import SwiftUI
 import SwiftTerm
+import Combine
 
 struct TermView: NSViewRepresentable {
-  func makeNSView(context: Context) -> some NSView {
-    return TerminalView(frame: .zero)
+  var didReceivedData: PassthroughSubject<ArraySlice<UInt8>, Never>?
+  @State private var cancellable: AnyCancellable? = nil
+  
+  func makeCoordinator() -> Coordinator {
+    Coordinator()
   }
   
-  func updateNSView(_ nsView: NSViewType, context: Context) {
-    
+  func makeNSView(context: Context) -> TerminalView {
+    TerminalView(frame: .zero)
+  }
+  
+  func updateNSView(_ nsView: TerminalView, context: Context) {
+    if (didReceivedData != nil) {
+      DispatchQueue.main.async {
+        self.cancellable = didReceivedData?.sink(receiveValue: { byteArray in
+          nsView.feed(byteArray: byteArray)
+        })
+      }
+    }
   }
 }
