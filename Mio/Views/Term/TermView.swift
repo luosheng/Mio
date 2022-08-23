@@ -26,12 +26,16 @@ struct TermView: NSViewRepresentable {
   
   func updateNSView(_ nsView: TerminalView, context: Context) {
     DispatchQueue.main.async {
-      self.cancellable = project.dataPublisher.sink(receiveValue: { byteArray in
-        nsView.feed(byteArray: byteArray)
-      })
-      self.historyCancellable = project.history.publisher.sink(receiveValue: { byteArray in
-        nsView.feed(byteArray: byteArray)
-      })
+      if (self.cancellable == nil) {
+        self.cancellable = project.dataPublisher.sink(receiveValue: { byteArray in
+          nsView.feed(byteArray: byteArray)
+        })
+      }
+      if (self.historyCancellable == nil) {
+        self.historyCancellable = project.history.publisher.sink(receiveValue: { byteArray in
+          nsView.feed(byteArray: byteArray)
+        })
+      }
     }
     applyTheme(nsView, theme: theme)
   }
