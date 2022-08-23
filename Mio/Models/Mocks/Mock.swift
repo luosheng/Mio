@@ -8,8 +8,8 @@
 import Foundation
 
 let mockProjects = [
-  Project(name: "Project A"),
-  Project(name: "Project B")
+  Project(name: "Project A", command: "printenv"),
+  Project(name: "Project B", command: "/opt/homebrew/bin/msgcat --color=test")
 ]
 
 let mockStore = Store(projects: mockProjects)
