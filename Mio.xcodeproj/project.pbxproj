@@ -68,6 +68,7 @@
 		B33B298228B4A903009CD8D7 /* Mio */ = {
 			isa = PBXGroup;
 			children = (
+				B3BA458928B4C85F002F11C2 /* Utils */,
 				B3BA457A28B4AF1F002F11C2 /* Views */,
 				B35BCCCF28B4ACA400F1779E /* Models */,
 				B33B298328B4A903009CD8D7 /* MioApp.swift */,
@@ -138,6 +139,13 @@
 				B3BA458728B4C12B002F11C2 /* TermView.swift */,
 			);
 			path = Term;
+			sourceTree = "<group>";
+		};
+		B3BA458928B4C85F002F11C2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -8,8 +8,8 @@
 import Foundation
 
 let mockProjects = [
-  Project(id: UUID(), name: "Project A"),
-  Project(id: UUID(), name: "Project B")
+  Project(name: "Project A"),
+  Project(name: "Project B")
 ]
 
 let mockStore = Store(projects: mockProjects)

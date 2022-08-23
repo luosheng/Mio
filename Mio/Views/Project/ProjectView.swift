@@ -19,7 +19,7 @@ struct ProjectView: View {
       ToolbarItemGroup {
         Spacer()
         Button {
-          
+          project.run()
         } label: {
           Image(systemName: "play.circle")
         }
