@@ -17,6 +17,7 @@
 		B3BA457D28B4AF38002F11C2 /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BA457C28B4AF38002F11C2 /* Sidebar.swift */; };
 		B3BA457F28B4B6C7002F11C2 /* SidebarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BA457E28B4B6C7002F11C2 /* SidebarItem.swift */; };
 		B3BA458228B4B7ED002F11C2 /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BA458128B4B7ED002F11C2 /* ProjectView.swift */; };
+		B3BA458528B4C0FD002F11C2 /* SwiftTerm in Frameworks */ = {isa = PBXBuildFile; productRef = B3BA458428B4C0FD002F11C2 /* SwiftTerm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3BA458528B4C0FD002F11C2 /* SwiftTerm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +145,9 @@
 			dependencies = (
 			);
 			name = Mio;
+			packageProductDependencies = (
+				B3BA458428B4C0FD002F11C2 /* SwiftTerm */,
+			);
 			productName = Mio;
 			productReference = B33B298028B4A903009CD8D7 /* Mio.app */;
 			productType = "com.apple.product-type.application";
@@ -171,6 +176,9 @@
 				Base,
 			);
 			mainGroup = B33B297728B4A903009CD8D7;
+			packageReferences = (
+				B3BA458328B4C0FD002F11C2 /* XCRemoteSwiftPackageReference "SwiftTerm" */,
+			);
 			productRefGroup = B33B298128B4A903009CD8D7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -396,6 +404,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B3BA458328B4C0FD002F11C2 /* XCRemoteSwiftPackageReference "SwiftTerm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/migueldeicaza/SwiftTerm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B3BA458428B4C0FD002F11C2 /* SwiftTerm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B3BA458328B4C0FD002F11C2 /* XCRemoteSwiftPackageReference "SwiftTerm" */;
+			productName = SwiftTerm;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B33B297828B4A903009CD8D7 /* Project object */;
 }
