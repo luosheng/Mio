@@ -11,6 +11,8 @@ import Combine
 
 struct TermView: NSViewRepresentable {
   @State var project: Project
+  @State var theme: ThemeColor = Themes.light
+  
   @State private var cancellable: AnyCancellable?
   @State private var historyCancellable: AnyCancellable?
   
@@ -31,5 +33,13 @@ struct TermView: NSViewRepresentable {
         nsView.feed(byteArray: byteArray)
       })
     }
+    applyTheme(nsView, theme: theme)
+  }
+  
+  private func applyTheme(_ view: TerminalView, theme: ThemeColor) {
+    view.installColors(theme.ansi)
+    let t = view.getTerminal()
+    view.setBackgroundColor(source: t, color: theme.background)
+    view.setForegroundColor(source: t, color: theme.foreground)
   }
 }

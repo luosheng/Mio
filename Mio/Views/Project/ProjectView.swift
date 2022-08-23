@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct ProjectView: View {
+  @Environment(\.colorScheme) var colorScheme
   var project: Project
   
   var body: some View {
     VStack {
-      TermView(project: project)
+      TermView(project: project, theme: colorScheme == .light ? Themes.light : Themes.dark)
     }
     .navigationTitle(project.name)
     .toolbar {
