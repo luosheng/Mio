@@ -13,7 +13,9 @@ struct Sidebar: View {
   var body: some View {
     List {
       ForEach(store.projects) { p in
-        SidebarItem(project: p)
+        NavigationLink(destination: ProjectView(project: p)) {
+          SidebarItem(project: p)
+        }
       }
     }
   }
