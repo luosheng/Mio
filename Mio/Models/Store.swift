@@ -10,7 +10,7 @@ import Foundation
 class Store: ObservableObject {
   static let shared: Store = .init()
   
-  var projects: [Project]
+  @Published var projects: [Project]
   
   convenience init() {
     self.init(projects: [])
