@@ -12,6 +12,7 @@
 		B33B298828B4A906009CD8D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B33B298728B4A906009CD8D7 /* Assets.xcassets */; };
 		B33B298B28B4A906009CD8D7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B33B298A28B4A906009CD8D7 /* Preview Assets.xcassets */; };
 		B35BCCD128B4ACB200F1779E /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35BCCD028B4ACB200F1779E /* Project.swift */; };
+		B3BA457728B4AD8D002F11C2 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BA457628B4AD8D002F11C2 /* Mock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		B33B298A28B4A906009CD8D7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B33B298C28B4A906009CD8D7 /* Mio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mio.entitlements; sourceTree = "<group>"; };
 		B35BCCD028B4ACB200F1779E /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		B3BA457628B4AD8D002F11C2 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,9 +77,18 @@
 		B35BCCCF28B4ACA400F1779E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B3BA457528B4AD81002F11C2 /* Mocks */,
 				B35BCCD028B4ACB200F1779E /* Project.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		B3BA457528B4AD81002F11C2 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				B3BA457628B4AD8D002F11C2 /* Mock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,6 +164,7 @@
 				B33B298628B4A903009CD8D7 /* ContentView.swift in Sources */,
 				B33B298428B4A903009CD8D7 /* MioApp.swift in Sources */,
 				B35BCCD128B4ACB200F1779E /* Project.swift in Sources */,
+				B3BA457728B4AD8D002F11C2 /* Mock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
