@@ -13,6 +13,7 @@
 		B30E470D28B5981600E8893E /* ProjectDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E470C28B5981600E8893E /* ProjectDetailView.swift */; };
 		B30E471028B59E3E00E8893E /* PathChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E470F28B59E3E00E8893E /* PathChooser.swift */; };
 		B30E471228B5D29800E8893E /* SidebarItemContextMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E471128B5D29800E8893E /* SidebarItemContextMenuView.swift */; };
+		B30E471E28B64DAE00E8893E /* SwiftTerm in Frameworks */ = {isa = PBXBuildFile; productRef = B30E471D28B64DAE00E8893E /* SwiftTerm */; };
 		B33B298428B4A903009CD8D7 /* MioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B298328B4A903009CD8D7 /* MioApp.swift */; };
 		B33B298628B4A903009CD8D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B298528B4A903009CD8D7 /* ContentView.swift */; };
 		B33B298828B4A906009CD8D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B33B298728B4A906009CD8D7 /* Assets.xcassets */; };
@@ -23,7 +24,6 @@
 		B3BA457D28B4AF38002F11C2 /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BA457C28B4AF38002F11C2 /* Sidebar.swift */; };
 		B3BA457F28B4B6C7002F11C2 /* SidebarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BA457E28B4B6C7002F11C2 /* SidebarItem.swift */; };
 		B3BA458228B4B7ED002F11C2 /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BA458128B4B7ED002F11C2 /* ProjectView.swift */; };
-		B3BA458528B4C0FD002F11C2 /* SwiftTerm in Frameworks */ = {isa = PBXBuildFile; productRef = B3BA458428B4C0FD002F11C2 /* SwiftTerm */; };
 		B3BA458828B4C12B002F11C2 /* TermView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BA458728B4C12B002F11C2 /* TermView.swift */; };
 /* End PBXBuildFile section */
 
@@ -54,7 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3BA458528B4C0FD002F11C2 /* SwiftTerm in Frameworks */,
+				B30E471E28B64DAE00E8893E /* SwiftTerm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,7 +191,7 @@
 			);
 			name = Mio;
 			packageProductDependencies = (
-				B3BA458428B4C0FD002F11C2 /* SwiftTerm */,
+				B30E471D28B64DAE00E8893E /* SwiftTerm */,
 			);
 			productName = Mio;
 			productReference = B33B298028B4A903009CD8D7 /* Mio.app */;
@@ -222,7 +222,7 @@
 			);
 			mainGroup = B33B297728B4A903009CD8D7;
 			packageReferences = (
-				B3BA458328B4C0FD002F11C2 /* XCRemoteSwiftPackageReference "SwiftTerm" */,
+				B30E471C28B64DAE00E8893E /* XCRemoteSwiftPackageReference "SwiftTerm" */,
 			);
 			productRefGroup = B33B298128B4A903009CD8D7 /* Products */;
 			projectDirPath = "";
@@ -458,20 +458,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		B3BA458328B4C0FD002F11C2 /* XCRemoteSwiftPackageReference "SwiftTerm" */ = {
+		B30E471C28B64DAE00E8893E /* XCRemoteSwiftPackageReference "SwiftTerm" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/migueldeicaza/SwiftTerm.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				branch = main;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		B3BA458428B4C0FD002F11C2 /* SwiftTerm */ = {
+		B30E471D28B64DAE00E8893E /* SwiftTerm */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B3BA458328B4C0FD002F11C2 /* XCRemoteSwiftPackageReference "SwiftTerm" */;
+			package = B30E471C28B64DAE00E8893E /* XCRemoteSwiftPackageReference "SwiftTerm" */;
 			productName = SwiftTerm;
 		};
 /* End XCSwiftPackageProductDependency section */
