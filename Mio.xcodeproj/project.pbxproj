@@ -14,6 +14,7 @@
 		B30E471028B59E3E00E8893E /* PathChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E470F28B59E3E00E8893E /* PathChooser.swift */; };
 		B30E471228B5D29800E8893E /* SidebarItemContextMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E471128B5D29800E8893E /* SidebarItemContextMenuView.swift */; };
 		B30E471E28B64DAE00E8893E /* SwiftTerm in Frameworks */ = {isa = PBXBuildFile; productRef = B30E471D28B64DAE00E8893E /* SwiftTerm */; };
+		B30E472028B65E2700E8893E /* MacLocalProcessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E471F28B65E2700E8893E /* MacLocalProcessView.swift */; };
 		B33B298428B4A903009CD8D7 /* MioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B298328B4A903009CD8D7 /* MioApp.swift */; };
 		B33B298628B4A903009CD8D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B298528B4A903009CD8D7 /* ContentView.swift */; };
 		B33B298828B4A906009CD8D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B33B298728B4A906009CD8D7 /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 		B30E470C28B5981600E8893E /* ProjectDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailView.swift; sourceTree = "<group>"; };
 		B30E470F28B59E3E00E8893E /* PathChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathChooser.swift; sourceTree = "<group>"; };
 		B30E471128B5D29800E8893E /* SidebarItemContextMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItemContextMenuView.swift; sourceTree = "<group>"; };
+		B30E471F28B65E2700E8893E /* MacLocalProcessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacLocalProcessView.swift; sourceTree = "<group>"; };
 		B33B298028B4A903009CD8D7 /* Mio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B33B298328B4A903009CD8D7 /* MioApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MioApp.swift; sourceTree = "<group>"; };
 		B33B298528B4A903009CD8D7 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				B3BA458728B4C12B002F11C2 /* TermView.swift */,
+				B30E471F28B65E2700E8893E /* MacLocalProcessView.swift */,
 			);
 			path = Term;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				B30E470D28B5981600E8893E /* ProjectDetailView.swift in Sources */,
 				B30E470628B523A600E8893E /* Themes.swift in Sources */,
 				B33B298628B4A903009CD8D7 /* ContentView.swift in Sources */,
+				B30E472028B65E2700E8893E /* MacLocalProcessView.swift in Sources */,
 				B30E471228B5D29800E8893E /* SidebarItemContextMenuView.swift in Sources */,
 				B30E471028B59E3E00E8893E /* PathChooser.swift in Sources */,
 				B30E470028B4FC1300E8893E /* ShellService.swift in Sources */,

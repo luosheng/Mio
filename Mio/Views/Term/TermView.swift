@@ -15,7 +15,7 @@ struct TermView: NSViewRepresentable {
   
   @State private var actionCancellable: AnyCancellable?
   
-  class Coordinator: LocalProcessTerminalViewDelegate {
+  class Coordinator: MacLocalProcessTerminalViewDelegate {
     
     var view: TermView
     
@@ -23,11 +23,11 @@ struct TermView: NSViewRepresentable {
       self.view = view
     }
     
-    func sizeChanged(source: LocalProcessTerminalView, newCols: Int, newRows: Int) {
+    func sizeChanged(source: MacLocalProcessTerminalView, newCols: Int, newRows: Int) {
       print("size changed")
     }
     
-    func setTerminalTitle(source: LocalProcessTerminalView, title: String) {
+    func setTerminalTitle(source: MacLocalProcessTerminalView, title: String) {
       
     }
     
@@ -46,8 +46,8 @@ struct TermView: NSViewRepresentable {
     Coordinator(self)
   }
   
-  func makeNSView(context: Context) -> LocalProcessTerminalView {
-    let view = LocalProcessTerminalView(frame: .init(x: 0, y: 0, width: 100, height: 100))
+  func makeNSView(context: Context) -> MacLocalProcessTerminalView {
+    let view = MacLocalProcessTerminalView(frame: .init(x: 0, y: 0, width: 100, height: 100))
     
     DispatchQueue.main.async {
       self.actionCancellable = project.actionPublisher.sink(receiveValue: { action in
@@ -65,7 +65,7 @@ struct TermView: NSViewRepresentable {
     return view
   }
   
-  func updateNSView(_ nsView: LocalProcessTerminalView, context: Context) {
+  func updateNSView(_ nsView: MacLocalProcessTerminalView, context: Context) {
     nsView.processDelegate = context.coordinator
     applyTheme(nsView, theme: theme)
   }
