@@ -32,10 +32,15 @@ struct ProjectDetailView: View {
         Button("Cancel") {
           self.presented = false
         }
+        .keyboardShortcut(.cancelAction)
+        
         Spacer()
+        
         Button("Save") {
           dump(project)
         }
+        .keyboardShortcut(KeyEquivalent.return, modifiers: .command)
+        .disabled(project.name == "")
       }
       .padding()
     }
