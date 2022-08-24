@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProjectView: View {
   @Environment(\.colorScheme) var colorScheme
-  var project: Project
+  @StateObject var project: Project
   
   var body: some View {
     VStack {
@@ -17,21 +17,20 @@ struct ProjectView: View {
     }
     .navigationTitle(project.name)
     .toolbar {
-      ToolbarItemGroup {
-        Spacer()
-        if (project.running) {
-          Button {
-            project.stop()
-          } label: {
-            Image(systemName: "stop.circle")
-          }
-        } else {
-          Button {
-            project.run()
-          } label: {
-            Image(systemName: "play.circle")
-          }
+      ToolbarItemGroup(placement: .primaryAction) {
+        Button {
+          project.run()
+        } label: {
+          Image(systemName: "play.fill")
         }
+        .disabled(project.running)
+        
+        Button {
+          project.stop()
+        } label: {
+          Image(systemName: "stop.fill")
+        }
+        .disabled(!project.running)
       }
     }
   }
