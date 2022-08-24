@@ -9,7 +9,9 @@ import SwiftUI
 
 struct ProjectDetailView: View {
   @Binding var presented: Bool
+  var editing: Bool = false
   @StateObject var project = Project(name: "", command: "")
+  @EnvironmentObject var store: Store
   
   var body: some View {
     VStack {
@@ -39,6 +41,10 @@ struct ProjectDetailView: View {
         
         Button("Save") {
           dump(project)
+          if (!editing) {
+            self.store.projects.append(project)
+          }
+          self.presented = false
         }
         .keyboardShortcut(KeyEquivalent.return, modifiers: .command)
         .disabled(project.name == "")
