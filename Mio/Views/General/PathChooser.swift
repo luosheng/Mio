@@ -17,6 +17,7 @@ struct PathChooser: View {
       TextField(titleKey, text: $text)
       Button("...") {
         let dialog = NSOpenPanel()
+        dialog.directoryURL = URL(fileURLWithPath: self.text)
         if let dialogConfig = dialogConfig {
           dialogConfig(dialog)
         }

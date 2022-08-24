@@ -30,7 +30,7 @@ class Project: Identifiable, ObservableObject, LocalProcessDelegate {
   }
   
   convenience init(name: String, command: String) {
-    self.init(name: name, command: command, directory: "/")
+    self.init(name: name, command: command, directory: FileManager.default.homeDirectoryForCurrentUser.path)
   }
   
   func encode(to encoder: Encoder) throws {
