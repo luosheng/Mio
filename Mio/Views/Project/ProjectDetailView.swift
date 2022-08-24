@@ -22,6 +22,7 @@ struct ProjectDetailView: View {
           panel.title = "Choose working directoy"
           panel.canChooseDirectories = true
         }
+        TextField("Command", text: $project.command)
       }
       .padding()
       
