@@ -12,12 +12,33 @@ struct ProjectDetailView: View {
   
   var body: some View {
     VStack {
-      Text("Hello, World!")
-      Divider()
-      Button("Cancel") {
-        self.presented = false
+      Text("Project")
+        .font(.title)
+        .padding()
+      Form {
+        TextField("Name", text: .constant(""))
+        PathChooser(titleKey: "Working Directory", text: .constant("")) { panel in
+          panel.title = "Choose working directoy"
+          panel.canChooseDirectories = true
+        }
       }
+      .padding()
+      
+      Spacer()
+      Divider()
+      
+      HStack {
+        Button("Cancel") {
+          self.presented = false
+        }
+        Spacer()
+        Button("Save") {
+          
+        }
+      }
+      .padding()
     }
+    .frame(width: 600, height: 300, alignment: .topLeading)
   }
 }
 
