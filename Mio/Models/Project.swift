@@ -60,6 +60,6 @@ class Project: Codable, Identifiable, ObservableObject {
   }
   
   func stop() {
-    
+    actionPublisher.send(.terminate)
   }
 }

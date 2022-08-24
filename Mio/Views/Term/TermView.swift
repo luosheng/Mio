@@ -53,7 +53,7 @@ struct TermView: NSViewRepresentable {
       self.actionCancellable = project.actionPublisher.sink(receiveValue: { action in
         switch (action) {
         case .terminate:
-          print("terminate")
+          view.terminateCurrentProcess()
         case let .run(p):
           FileManager.default.changeCurrentDirectoryPath(p.directory)
           project.running = true

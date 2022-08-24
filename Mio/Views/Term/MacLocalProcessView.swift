@@ -141,6 +141,13 @@ public class MacLocalProcessTerminalView: TerminalView, TerminalViewDelegate, Lo
     process.startProcess(executable: executable, args: args, environment: environment, execName: execName)
   }
   
+  public func terminateCurrentProcess() {
+    guard process.running else {
+      return
+    }
+    process.terminate()
+  }
+  
   /**
    * Implements the LocalProcessDelegate method.
    */
