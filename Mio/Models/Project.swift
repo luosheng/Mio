@@ -9,11 +9,11 @@ import Foundation
 import SwiftTerm
 import Combine
 
-class Project: Codable, Identifiable, LocalProcessDelegate {
+class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
   var id: UUID
   var name: String
   var command: String
-  var directory: String?
+  var directory: String
   var history: [ArraySlice<UInt8>] = []
   
   var dataPublisher: PassthroughSubject<ArraySlice<UInt8>, Never> = PassthroughSubject()
@@ -22,7 +22,7 @@ class Project: Codable, Identifiable, LocalProcessDelegate {
     case id, name, command, directory
   }
   
-  init(name: String, command: String, directory: String?) {
+  init(name: String, command: String, directory: String) {
     self.id = UUID()
     self.name = name
     self.command = command
@@ -30,7 +30,7 @@ class Project: Codable, Identifiable, LocalProcessDelegate {
   }
   
   convenience init(name: String, command: String) {
-    self.init(name: name, command: command, directory: nil)
+    self.init(name: name, command: command, directory: "/")
   }
   
   required init(from decoder: Decoder) throws {
@@ -38,14 +38,12 @@ class Project: Codable, Identifiable, LocalProcessDelegate {
     id = try container.decode(UUID.self, forKey: .id)
     name = try container.decode(String.self, forKey: .name)
     command = try container.decode(String.self, forKey: .command)
-    directory = try container.decode(String?.self, forKey: .directory)
+    directory = try container.decode(String.self, forKey: .directory)
   }
   
   func run() {
     let process = LocalProcess(delegate: self)
-    if let directory = directory {
-      chdir(NSString(string: directory).utf8String)
-    }
+    chdir(NSString(string: directory).utf8String)
     process.startProcess(executable: ShellService.shared.shellPath, args: ["-l", "-c", command], environment: nil, execName: nil)
   }
   
