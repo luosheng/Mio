@@ -20,23 +20,22 @@ struct TermView: NSViewRepresentable {
     Coordinator()
   }
   
-  func makeNSView(context: Context) -> TerminalView {
-    TerminalView(frame: .zero)
+  func makeNSView(context: Context) -> LocalProcessTerminalView {
+    let view = LocalProcessTerminalView(frame: .zero)
+    
+    DispatchQueue.main.async {
+      self.cancellable = project.dataPublisher.sink(receiveValue: { byteArray in
+        view.feed(byteArray: byteArray)
+      })
+      self.historyCancellable = project.history.publisher.sink(receiveValue: { byteArray in
+        view.feed(byteArray: byteArray)
+      })
+    }
+    
+    return view
   }
   
-  func updateNSView(_ nsView: TerminalView, context: Context) {
-    DispatchQueue.main.async {
-      if (self.cancellable == nil) {
-        self.cancellable = project.dataPublisher.sink(receiveValue: { byteArray in
-          nsView.feed(byteArray: byteArray)
-        })
-      }
-      if (self.historyCancellable == nil) {
-        self.historyCancellable = project.history.publisher.sink(receiveValue: { byteArray in
-          nsView.feed(byteArray: byteArray)
-        })
-      }
-    }
+  func updateNSView(_ nsView: LocalProcessTerminalView, context: Context) {
     applyTheme(nsView, theme: theme)
   }
   
