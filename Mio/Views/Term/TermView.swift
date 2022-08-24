@@ -13,7 +13,7 @@ struct TermView: NSViewRepresentable {
   @State var project: Project
   @State var theme: ThemeColor = Themes.light
   
-  @State private var runCancellable: AnyCancellable?
+  @State private var actionCancellable: AnyCancellable?
   
   class Coordinator: LocalProcessTerminalViewDelegate {
     
@@ -50,10 +50,15 @@ struct TermView: NSViewRepresentable {
     let view = LocalProcessTerminalView(frame: .init(x: 0, y: 0, width: 100, height: 100))
     
     DispatchQueue.main.async {
-      self.runCancellable = project.runPublisher.sink(receiveValue: { p in
-        FileManager.default.changeCurrentDirectoryPath(p.directory)
-        project.running = true
-        view.startProcess(executable: ShellService.shared.shellPath, args: ["-l", "-c", "-i", p.command], environment: nil, execName: nil)
+      self.actionCancellable = project.actionPublisher.sink(receiveValue: { action in
+        switch (action) {
+        case .terminate:
+          print("terminate")
+        case let .run(p):
+          FileManager.default.changeCurrentDirectoryPath(p.directory)
+          project.running = true
+          view.startProcess(executable: ShellService.shared.shellPath, args: ["-l", "-c", "-i", p.command], environment: nil, execName: nil)
+        }
       })
     }
     

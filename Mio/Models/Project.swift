@@ -9,6 +9,11 @@ import Foundation
 import SwiftTerm
 import Combine
 
+enum ProjectAction {
+  case terminate
+  case run(Project)
+}
+
 class Project: Codable, Identifiable, ObservableObject {
   @Published var id: UUID
   @Published var name: String
@@ -17,7 +22,7 @@ class Project: Codable, Identifiable, ObservableObject {
   @Published var running: Bool = false
   
   var process: LocalProcess?
-  var runPublisher: PassthroughSubject<Project, Never> = PassthroughSubject()
+  var actionPublisher: PassthroughSubject<ProjectAction, Never> = PassthroughSubject()
   
   private enum CodingKeys : String, CodingKey {
     case id, name, command, directory
@@ -51,7 +56,7 @@ class Project: Codable, Identifiable, ObservableObject {
   }
   
   func run() {
-    runPublisher.send(self)
+    actionPublisher.send(.run(self))
   }
   
   func stop() {
