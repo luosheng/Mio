@@ -9,11 +9,11 @@ import Foundation
 import SwiftTerm
 import Combine
 
-class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
-  var id: UUID
-  var name: String
-  var command: String
-  var directory: String
+class Project: Identifiable, ObservableObject, LocalProcessDelegate {
+  @Published var id: UUID
+  @Published var name: String
+  @Published var command: String
+  @Published var directory: String
   var history: [ArraySlice<UInt8>] = []
   
   var dataPublisher: PassthroughSubject<ArraySlice<UInt8>, Never> = PassthroughSubject()
@@ -31,6 +31,14 @@ class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
   
   convenience init(name: String, command: String) {
     self.init(name: name, command: command, directory: "/")
+  }
+  
+  func encode(to encoder: Encoder) throws {
+    var container = encoder.container(keyedBy: CodingKeys.self)
+    try container.encode(id, forKey: .id)
+    try container.encode(name, forKey: .name)
+    try container.encode(command, forKey: .command)
+    try container.encode(directory, forKey: .directory)
   }
   
   required init(from decoder: Decoder) throws {

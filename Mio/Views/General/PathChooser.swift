@@ -33,6 +33,6 @@ struct PathChooser: View {
 
 struct PathChooser_Previews: PreviewProvider {
   static var previews: some View {
-    PathChooser(titleKey: "Test", text: .constant(""))
+    PathChooser(titleKey: "Test", text: .constant("/"))
   }
 }
