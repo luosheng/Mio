@@ -19,10 +19,18 @@ struct ProjectView: View {
     .toolbar {
       ToolbarItemGroup {
         Spacer()
-        Button {
-          project.run()
-        } label: {
-          Image(systemName: "play.circle")
+        if (project.running) {
+          Button {
+            project.stop()
+          } label: {
+            Image(systemName: "stop.circle")
+          }
+        } else {
+          Button {
+            project.run()
+          } label: {
+            Image(systemName: "play.circle")
+          }
         }
       }
     }

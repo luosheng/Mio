@@ -67,6 +67,7 @@ class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
   
   func processTerminated(_ source: LocalProcess, exitCode: Int32?) {
     self.running = false
+    self.history = []
   }
   
   func dataReceived(slice: ArraySlice<UInt8>) {
