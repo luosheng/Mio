@@ -10,6 +10,7 @@ import SwiftUI
 struct ProjectView: View {
   @Environment(\.colorScheme) var colorScheme
   @StateObject var project: Project
+  @State private var presentingProjectDetail: Bool = false
   
   var body: some View {
     VStack {
@@ -18,6 +19,12 @@ struct ProjectView: View {
     .navigationTitle(project.name)
     .toolbar {
       ToolbarItemGroup(placement: .primaryAction) {
+        Button {
+          presentingProjectDetail = true
+        } label: {
+          Image(systemName: "square.and.pencil")
+        }
+        
         Button {
           project.run()
         } label: {
@@ -32,6 +39,9 @@ struct ProjectView: View {
         }
         .disabled(!project.running)
       }
+    }
+    .sheet(isPresented: $presentingProjectDetail) {
+      ProjectDetailView(presented: $presentingProjectDetail, editing: true, project: project)
     }
   }
 }
