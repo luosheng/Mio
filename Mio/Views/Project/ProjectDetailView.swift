@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ProjectDetailView: View {
   @Binding var presented: Bool
+  @StateObject var project = Project(name: "", command: "")
   
   var body: some View {
     VStack {
@@ -16,8 +17,8 @@ struct ProjectDetailView: View {
         .font(.title)
         .padding()
       Form {
-        TextField("Name", text: .constant(""))
-        PathChooser(titleKey: "Working Directory", text: .constant("")) { panel in
+        TextField("Name", text: $project.name)
+        PathChooser(titleKey: "Working Directory", text: $project.directory) { panel in
           panel.title = "Choose working directoy"
           panel.canChooseDirectories = true
         }
@@ -33,7 +34,7 @@ struct ProjectDetailView: View {
         }
         Spacer()
         Button("Save") {
-          
+          dump(project)
         }
       }
       .padding()
