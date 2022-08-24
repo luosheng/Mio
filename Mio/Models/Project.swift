@@ -9,7 +9,7 @@ import Foundation
 import SwiftTerm
 import Combine
 
-class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
+class Project: Codable, Identifiable, ObservableObject {
   @Published var id: UUID
   @Published var name: String
   @Published var command: String
@@ -17,9 +17,7 @@ class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
   @Published var running: Bool = false
   
   var process: LocalProcess?
-  var history: [ArraySlice<UInt8>] = []
-  
-  var dataPublisher: PassthroughSubject<ArraySlice<UInt8>, Never> = PassthroughSubject()
+  var runPublisher: PassthroughSubject<Project, Never> = PassthroughSubject()
   
   private enum CodingKeys : String, CodingKey {
     case id, name, command, directory
@@ -53,29 +51,10 @@ class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
   }
   
   func run() {
-    self.process = LocalProcess(delegate: self)
-    FileManager.default.changeCurrentDirectoryPath(directory)
-    self.process?.startProcess(executable: ShellService.shared.shellPath, args: ["-l", "-c", command], environment: nil, execName: nil)
-    self.running = true
+    runPublisher.send(self)
   }
   
   func stop() {
     
-  }
-  
-  // MARK: - LocalProcessDelegate
-  
-  func processTerminated(_ source: LocalProcess, exitCode: Int32?) {
-    self.running = false
-    self.history = []
-  }
-  
-  func dataReceived(slice: ArraySlice<UInt8>) {
-    history.append(slice)
-    self.dataPublisher.send(slice)
-  }
-  
-  func getWindowSize() -> winsize {
-    return winsize()
   }
 }

@@ -13,22 +13,19 @@ struct TermView: NSViewRepresentable {
   @State var project: Project
   @State var theme: ThemeColor = Themes.light
   
-  @State private var cancellable: AnyCancellable?
-  @State private var historyCancellable: AnyCancellable?
+  @State private var runCancellable: AnyCancellable?
   
   func makeCoordinator() -> Coordinator {
     Coordinator()
   }
   
   func makeNSView(context: Context) -> LocalProcessTerminalView {
-    let view = LocalProcessTerminalView(frame: .zero)
+    let view = LocalProcessTerminalView(frame: .init(x: 0, y: 0, width: 100, height: 100))
     
     DispatchQueue.main.async {
-      self.cancellable = project.dataPublisher.sink(receiveValue: { byteArray in
-        view.feed(byteArray: byteArray)
-      })
-      self.historyCancellable = project.history.publisher.sink(receiveValue: { byteArray in
-        view.feed(byteArray: byteArray)
+      self.runCancellable = project.runPublisher.sink(receiveValue: { p in
+        FileManager.default.changeCurrentDirectoryPath(p.directory)
+        view.startProcess(executable: ShellService.shared.shellPath, args: ["-l", "-c", "-i", p.command], environment: nil, execName: nil)
       })
     }
     
