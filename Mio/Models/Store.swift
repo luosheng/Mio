@@ -11,6 +11,7 @@ class Store: ObservableObject {
   static let shared: Store = .init()
   
   @Published var projects: [Project]
+  var projectsSavePath: URL
   
   convenience init() {
     self.init(projects: [])
@@ -19,6 +20,35 @@ class Store: ObservableObject {
   init(
     projects: [Project]
   ) {
+    self.projects = projects
+    
+    var saveUrl: URL
+    if let url = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first,
+       let id = Bundle.main.bundleIdentifier {
+      saveUrl = url.appendingPathComponent(id)
+    } else {
+      saveUrl = FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent(".mio-launcher")
+    }
+    try? FileManager.default.createDirectory(at: saveUrl, withIntermediateDirectories: true)
+    projectsSavePath = saveUrl.appendingPathComponent("projects.json")
+    
+    self.load()
+  }
+  
+  func save() {
+    let encoder = JSONEncoder()
+    let data = try? encoder.encode(projects)
+    try? data?.write(to: self.projectsSavePath)
+  }
+  
+  func load() {
+    guard let data = try? Data(contentsOf: self.projectsSavePath) else {
+      return
+    }
+    let decoder = JSONDecoder()
+    guard let projects = try? decoder.decode([Project]?.self, from: data) else {
+      return
+    }
     self.projects = projects
   }
 }

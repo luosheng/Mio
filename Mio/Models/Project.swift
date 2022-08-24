@@ -9,7 +9,7 @@ import Foundation
 import SwiftTerm
 import Combine
 
-class Project: Identifiable, ObservableObject, LocalProcessDelegate {
+class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
   @Published var id: UUID
   @Published var name: String
   @Published var command: String

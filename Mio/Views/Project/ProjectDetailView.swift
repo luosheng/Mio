@@ -44,6 +44,7 @@ struct ProjectDetailView: View {
           if (!editing) {
             self.store.projects.append(project)
           }
+          self.store.save()
           self.presented = false
         }
         .keyboardShortcut(KeyEquivalent.return, modifiers: .command)
