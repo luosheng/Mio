@@ -18,6 +18,9 @@ struct Sidebar: View {
           NavigationLink(destination: ProjectView(project: p)) {
             SidebarItem(project: p)
           }
+          .contextMenu {
+            SidebarItemContextMenuView(project: p)
+          }
         }
         .onMove { indexSet, index in
           store.moveProject(from: indexSet, to: index)

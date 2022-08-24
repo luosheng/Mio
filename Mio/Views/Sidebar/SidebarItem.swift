@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct SidebarItem: View {
-  var project: Project
+  @ObservedObject var project: Project
   
   var body: some View {
-    Text(project.name)
+    VStack {
+      Text(project.name)
+        .font(.title3)
+    }
   }
 }
 
