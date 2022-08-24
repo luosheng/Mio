@@ -54,7 +54,7 @@ class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
   
   func run() {
     self.process = LocalProcess(delegate: self)
-    chdir(NSString(string: directory).utf8String)
+    FileManager.default.changeCurrentDirectoryPath(directory)
     self.process?.startProcess(executable: ShellService.shared.shellPath, args: ["-l", "-c", command], environment: nil, execName: nil)
     self.running = true
   }
