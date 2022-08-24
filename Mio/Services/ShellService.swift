@@ -16,20 +16,25 @@ struct ShellService {
   var shellPath: String!
   
   init() {
-    shellPath = ShellService.DEFAULT_SHELL
-    let process = Process()
-    process.executableURL = URL(fileURLWithPath: ShellService.DEFAULT_SHELL)
-    process.arguments = ["-l", "-c", "dscl . -read ~/ UserShell"]
-    let pipe = Pipe()
-    process.standardOutput = pipe
-    try? process.run()
-    guard let data = try? pipe.fileHandleForReading.readToEnd() else {
-      return
+    shellPath = self.getShell()
+  }
+  
+  private func getShell() -> String {
+    let bufsize = sysconf(_SC_GETPW_R_SIZE_MAX)
+    guard bufsize != -1 else {
+      return ShellService.DEFAULT_SHELL
     }
-    guard let output = String(data: data, encoding: .utf8) else {
-      return
+    let buffer = UnsafeMutablePointer<Int8>.allocate(capacity: bufsize)
+    defer {
+      buffer.deallocate()
     }
-    shellPath = output.trimmingCharacters(in: .whitespacesAndNewlines).replacingOccurrences(of: "UserShell: ", with: "")
+    var pwd = passwd()
+    var result: UnsafeMutablePointer<passwd>? = UnsafeMutablePointer<passwd>.allocate(capacity: 1)
+    
+    if getpwuid_r(getuid(), &pwd, buffer, bufsize, &result) != 0 {
+      return ShellService.DEFAULT_SHELL
+    }
+    return String(cString: pwd.pw_shell)
   }
   
 }
