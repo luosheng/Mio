@@ -19,7 +19,11 @@ struct Sidebar: View {
             SidebarItem(project: p)
           }
         }
+        .onMove { indexSet, index in
+          store.moveProject(from: indexSet, to: index)
+        }
       }
+      
       HStack {
         Button {
           presentingAddProject = true

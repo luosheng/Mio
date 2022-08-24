@@ -51,4 +51,11 @@ class Store: ObservableObject {
     }
     self.projects = projects
   }
+  
+  func moveProject(from: IndexSet, to index: Int) {
+    self.projects.move(fromOffsets: from, toOffset: index)
+    Task.detached {
+      self.save()
+    }
+  }
 }
