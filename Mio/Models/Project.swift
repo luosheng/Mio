@@ -14,6 +14,7 @@ class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
   @Published var name: String
   @Published var command: String
   @Published var directory: String
+  @Published var running: Bool = false
   var history: [ArraySlice<UInt8>] = []
   
   var dataPublisher: PassthroughSubject<ArraySlice<UInt8>, Never> = PassthroughSubject()
@@ -53,18 +54,18 @@ class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
     let process = LocalProcess(delegate: self)
     chdir(NSString(string: directory).utf8String)
     process.startProcess(executable: ShellService.shared.shellPath, args: ["-l", "-c", command], environment: nil, execName: nil)
+    self.running = true
   }
   
   // MARK: - LocalProcessDelegate
   
   func processTerminated(_ source: LocalProcess, exitCode: Int32?) {
-    print("process terminated")
+    self.running = false
   }
   
   func dataReceived(slice: ArraySlice<UInt8>) {
     history.append(slice)
     self.dataPublisher.send(slice)
-    print(slice)
   }
   
   func getWindowSize() -> winsize {
