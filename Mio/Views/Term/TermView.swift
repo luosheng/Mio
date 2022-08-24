@@ -15,8 +15,35 @@ struct TermView: NSViewRepresentable {
   
   @State private var runCancellable: AnyCancellable?
   
+  class Coordinator: LocalProcessTerminalViewDelegate {
+    
+    var view: TermView
+    
+    init(_ view: TermView) {
+      self.view = view
+    }
+    
+    func sizeChanged(source: LocalProcessTerminalView, newCols: Int, newRows: Int) {
+      print("size changed")
+    }
+    
+    func setTerminalTitle(source: LocalProcessTerminalView, title: String) {
+      
+    }
+    
+    func hostCurrentDirectoryUpdate(source: TerminalView, directory: String?) {
+      
+    }
+    
+    func processTerminated(source: TerminalView, exitCode: Int32?) {
+      self.view.project.running = false
+    }
+    
+    
+  }
+  
   func makeCoordinator() -> Coordinator {
-    Coordinator()
+    Coordinator(self)
   }
   
   func makeNSView(context: Context) -> LocalProcessTerminalView {
@@ -25,6 +52,7 @@ struct TermView: NSViewRepresentable {
     DispatchQueue.main.async {
       self.runCancellable = project.runPublisher.sink(receiveValue: { p in
         FileManager.default.changeCurrentDirectoryPath(p.directory)
+        project.running = true
         view.startProcess(executable: ShellService.shared.shellPath, args: ["-l", "-c", "-i", p.command], environment: nil, execName: nil)
       })
     }
@@ -33,6 +61,7 @@ struct TermView: NSViewRepresentable {
   }
   
   func updateNSView(_ nsView: LocalProcessTerminalView, context: Context) {
+    nsView.processDelegate = context.coordinator
     applyTheme(nsView, theme: theme)
   }
   
