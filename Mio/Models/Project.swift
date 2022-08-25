@@ -54,7 +54,9 @@ class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
     name = try container.decode(String.self, forKey: .name)
     command = try container.decode(String.self, forKey: .command)
     directory = try container.decode(String.self, forKey: .directory)
-    environments = try container.decode([ProjectEnv].self, forKey: .environments)
+    if let environments = try? container.decodeIfPresent([ProjectEnv].self, forKey: .environments) {
+      self.environments = environments
+    }
     
     self.process = LocalProcess(delegate: self, dispatchQueue: .global())
   }
