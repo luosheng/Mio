@@ -13,6 +13,17 @@ struct EnvironmentEditor: View {
   
   var body: some View {
     VStack {
+      Text("Edit environments")
+        .font(.title)
+        .padding()
+      HStack {
+        Button {
+          environments.append(ProjectEnv(name: "Name", value: "Value"))
+        } label: {
+          Image(systemName: "plus")
+        }
+        Spacer()
+      }
       Table(environments) {
         TableColumn("Name") { row in
           let binding = Binding {
