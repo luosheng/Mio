@@ -14,6 +14,16 @@ enum ProjectAction {
   case run(Project)
 }
 
+struct ProjectEnvironment: Identifiable {
+  var id: String {
+    get {
+      name
+    }
+  }
+  var name: String
+  var value: String
+}
+
 class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
   
   @Published var id: UUID
@@ -21,6 +31,7 @@ class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
   @Published var command: String
   @Published var directory: String
   @Published var running: Bool = false
+  @Published var environments: [ProjectEnvironment] = []
   
   var process: LocalProcess!
   weak var forwardedProgressDelegate: LocalProcessDelegate?
