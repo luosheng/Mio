@@ -11,7 +11,23 @@ struct EnvironmentEditor: View {
   @Binding var environments: [ProjectEnv]
   
   var body: some View {
-    Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    VStack {
+      Table(environments) {
+        TableColumn("Name") { row in
+          let binding = Binding {
+            row.name
+          } set: { val in
+            print("new value:", val)
+            if let index = environments.firstIndex(where: { env in
+              env.id == row.id
+            }) {
+              environments[index].name = val
+            }
+          }
+          TextEditor(text: binding)
+        }
+      }
+    }
   }
 }
 
