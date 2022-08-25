@@ -14,7 +14,9 @@ struct ProjectView: View {
   
   var body: some View {
     VStack {
-      project.ui.theme(colorScheme == .light ? Themes.light : Themes.dark)
+      project.ui
+        .theme(colorScheme == .light ? Themes.light : Themes.dark)
+        .frame(minWidth: 650, minHeight: 405)
     }
     .navigationTitle(project.name)
     .navigationSubtitle(project.command)

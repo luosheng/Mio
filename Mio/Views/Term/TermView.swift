@@ -19,7 +19,7 @@ struct TermView: NSViewRepresentable {
   func updateNSView(_ nsView: LocalProcessTerminalView, context: Context) {
   }
   
-  func theme(_ theme: ThemeColor) -> TermView {
+  func theme(_ theme: ThemeColor) -> some View {
     nsView.installColors(theme.ansi)
     let t = nsView.getTerminal()
     nsView.setBackgroundColor(source: t, color: theme.background)
