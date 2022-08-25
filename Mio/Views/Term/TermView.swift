@@ -14,12 +14,14 @@ struct TermView: NSViewRepresentable {
   @State var theme: ThemeColor = Themes.light
   
   func makeNSView(context: Context) -> LocalProcessTerminalView {
-    LocalProcessTerminalView(frame: .init(x: 0, y: 0, width: 100, height: 100))
+    LocalProcessTerminalView(frame: .zero)
   }
   
   func updateNSView(_ nsView: LocalProcessTerminalView, context: Context) {
     project.forwardedProgressDelegate = nsView
-    nsView.feed(byteArray: project.historyData[...])
+    DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100)) {
+      nsView.feed(byteArray: project.historyData[...])
+    }
     applyTheme(nsView, theme: theme)
   }
   
