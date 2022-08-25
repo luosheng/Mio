@@ -15,7 +15,7 @@ struct PathChooser: View {
   var body: some View {
     HStack {
       TextField(titleKey, text: $text)
-      Button("...") {
+      Button {
         let dialog = NSOpenPanel()
         dialog.directoryURL = URL(fileURLWithPath: self.text)
         if let dialogConfig = dialogConfig {
@@ -27,6 +27,8 @@ struct PathChooser: View {
           }
           text = url.path
         }
+      } label: {
+        Image(systemName: "ellipsis")
       }
     }
   }
