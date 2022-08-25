@@ -20,7 +20,7 @@ class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
   
   var process: LocalProcess!
   weak var forwardedProgressDelegate: LocalProcessDelegate?
-  var historyData: [UInt8] = []
+  var ui: TermView = .init()
   
   private enum CodingKeys : String, CodingKey {
     case id, name, command, directory, environments
@@ -33,7 +33,7 @@ class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
     self.directory = directory
     self.environments = environments
     
-    self.process = LocalProcess(delegate: self, dispatchQueue: .global())
+    setup()
   }
   
   convenience init(name: String, command: String) {
@@ -66,6 +66,11 @@ class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
       self.environments = []
     }
     
+    setup()
+  }
+  
+  private func setup() {
+    self.forwardedProgressDelegate = self.ui.nsView
     self.process = LocalProcess(delegate: self, dispatchQueue: .global())
   }
   
@@ -93,10 +98,7 @@ class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
   }
   
   func dataReceived(slice: ArraySlice<UInt8>) {
-    historyData.append(contentsOf: slice)
-    DispatchQueue.main.async {
-      self.forwardedProgressDelegate?.dataReceived(slice: slice)
-    }
+    self.ui.nsView.feed(byteArray: slice)
   }
   
   func getWindowSize() -> winsize {

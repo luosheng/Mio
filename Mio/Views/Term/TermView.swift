@@ -10,18 +10,14 @@ import SwiftTerm
 import Combine
 
 struct TermView: NSViewRepresentable {
-  @State var project: Project
   @State var theme: ThemeColor = Themes.light
+  var nsView = LocalProcessTerminalView(frame: .init(x: 0, y: 0, width: 650, height: 405))
   
   func makeNSView(context: Context) -> LocalProcessTerminalView {
-    LocalProcessTerminalView(frame: .init(x: 0, y: 0, width: 650, height: 405))
+    nsView
   }
   
   func updateNSView(_ nsView: LocalProcessTerminalView, context: Context) {
-    project.forwardedProgressDelegate = nsView
-    DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100)) {
-      nsView.feed(byteArray: project.historyData[...])
-    }
     applyTheme(nsView, theme: theme)
   }
   
