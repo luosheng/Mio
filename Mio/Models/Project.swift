@@ -14,15 +14,16 @@ enum ProjectAction {
   case run(Project)
 }
 
-class Project: Codable, Identifiable, ObservableObject {
+class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
+  
   @Published var id: UUID
   @Published var name: String
   @Published var command: String
   @Published var directory: String
   @Published var running: Bool = false
   
-  var process: LocalProcess?
-  var actionPublisher: PassthroughSubject<ProjectAction, Never> = PassthroughSubject()
+  var process: LocalProcess!
+  weak var forwardedProgressDelegate: LocalProcessDelegate?
   
   private enum CodingKeys : String, CodingKey {
     case id, name, command, directory
@@ -33,6 +34,8 @@ class Project: Codable, Identifiable, ObservableObject {
     self.name = name
     self.command = command
     self.directory = directory
+    
+    self.process = LocalProcess(delegate: self)
   }
   
   convenience init(name: String, command: String) {
@@ -53,13 +56,38 @@ class Project: Codable, Identifiable, ObservableObject {
     name = try container.decode(String.self, forKey: .name)
     command = try container.decode(String.self, forKey: .command)
     directory = try container.decode(String.self, forKey: .directory)
+    
+    self.process = LocalProcess(delegate: self, dispatchQueue: .global())
   }
   
   func run() {
-    actionPublisher.send(.run(self))
+    self.running = true
+    FileManager.default.changeCurrentDirectoryPath(directory)
+    self.process.startProcess(
+      executable: ShellService.shared.shellPath,
+      args: ["-l", "-i", "-c", "\(ShellService.shared.getPreCommand());\(command)"],
+      environment: nil,
+      execName: nil
+    )
   }
   
   func stop() {
-    actionPublisher.send(.terminate)
+    self.process.terminate()
+  }
+  
+  // MARK: - LocalProcessDelegate
+  
+  func processTerminated(_ source: LocalProcess, exitCode: Int32?) {
+    DispatchQueue.main.async {
+      self.running = false
+    }
+  }
+  
+  func dataReceived(slice: ArraySlice<UInt8>) {
+    self.forwardedProgressDelegate?.dataReceived(slice: slice)
+  }
+  
+  func getWindowSize() -> winsize {
+    return self.forwardedProgressDelegate?.getWindowSize() ?? winsize()
   }
 }
