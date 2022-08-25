@@ -17,6 +17,7 @@ struct ProjectView: View {
       TermView(project: project, theme: colorScheme == .light ? Themes.light : Themes.dark)
     }
     .navigationTitle(project.name)
+    .navigationSubtitle(project.command)
     .toolbar {
       ToolbarItemGroup(placement: .primaryAction) {
         Button {
