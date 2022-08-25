@@ -21,6 +21,11 @@ struct SettingGeneralView: View {
       }
       Spacer()
     }
+    .tabItem {
+      Label("General", systemImage: "gearshape")
+    }
+    .tag(0)
+    .frame(width: 400, height: 300)
     .padding()
   }
 }

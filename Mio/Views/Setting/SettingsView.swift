@@ -11,11 +11,6 @@ struct SettingsView: View {
   var body: some View {
     TabView {
       SettingGeneralView()
-        .tabItem {
-          Label("General", systemImage: "gearshape")
-        }
-        .tag(0)
-        .frame(width: 400, height: 300)
     }
   }
 }
