@@ -7,6 +7,10 @@
 
 import Foundation
 
+let PRE_COMMANDS = [
+  "/bin/zsh": "source ~/.zshrc"
+]
+
 struct ShellService {
   
   static let DEFAULT_SHELL = "/bin/bash"
@@ -35,6 +39,13 @@ struct ShellService {
       return ShellService.DEFAULT_SHELL
     }
     return String(cString: pwd.pw_shell)
+  }
+  
+  func getPreCommand() -> String {
+    guard let command = PRE_COMMANDS[self.shellPath] else {
+      return ""
+    }
+    return command
   }
   
 }

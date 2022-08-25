@@ -57,7 +57,12 @@ struct TermView: NSViewRepresentable {
         case let .run(p):
           FileManager.default.changeCurrentDirectoryPath(p.directory)
           project.running = true
-          view.startProcess(executable: ShellService.shared.shellPath, args: ["-l", "-c", "-i", p.command], environment: nil, execName: nil)
+          view.startProcess(
+            executable: ShellService.shared.shellPath,
+            args: ["-l", "-i", "-c", "\(ShellService.shared.getPreCommand());\(p.command)"],
+            environment: nil,
+            execName: nil
+          )
         }
       })
     }
