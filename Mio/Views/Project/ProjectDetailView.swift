@@ -41,7 +41,6 @@ struct ProjectDetailView: View {
         Spacer()
         
         Button("Save") {
-          dump(project)
           if (!editing) {
             self.store.projects.append(project)
           }
