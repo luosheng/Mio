@@ -13,10 +13,10 @@ struct ProjectEnv: Codable, Identifiable {
   var value: String
   
   static func parse(str: String) -> [ProjectEnv] {
-    return str.split(separator: ";")
+    let pairs = str.split(separator: ";")
       .map { $0.trimmingCharacters(in: .whitespaces).split(separator: "=") }
-      .filter { $0.count != 2 }
-      .map { ProjectEnv(
+    let validPairs = pairs.filter { $0.count == 2 }
+    return validPairs.map { ProjectEnv(
         name: String($0[0]).trimmingCharacters(in: .whitespaces),
         value: String($0[1]).trimmingCharacters(in: .whitespaces)
       ) }
