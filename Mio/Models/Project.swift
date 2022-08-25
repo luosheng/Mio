@@ -75,7 +75,7 @@ class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
     self.process.startProcess(
       executable: ShellService.shared.shellPath,
       args: ["-l", "-i", "-c", "\(ShellService.shared.getPreCommand());\(command)"],
-      environment: nil,
+      environment: self.environments.map { $0.toString() },
       execName: nil
     )
   }
