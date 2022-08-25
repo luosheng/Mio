@@ -14,7 +14,7 @@ struct TermView: NSViewRepresentable {
   @State var theme: ThemeColor = Themes.light
   
   func makeNSView(context: Context) -> LocalProcessTerminalView {
-    LocalProcessTerminalView(frame: .zero)
+    LocalProcessTerminalView(frame: .init(x: 0, y: 0, width: 650, height: 405))
   }
   
   func updateNSView(_ nsView: LocalProcessTerminalView, context: Context) {
