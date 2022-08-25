@@ -26,7 +26,7 @@ struct EnvironmentField: View {
   }
 }
 
-struct EnvironmentEditor_Previews: PreviewProvider {
+struct EnvironmentField_Previews: PreviewProvider {
   static var previews: some View {
     EnvironmentField(text: .constant("A=B;C=D"))
   }
