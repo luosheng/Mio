@@ -24,6 +24,7 @@ class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
   
   var process: LocalProcess!
   weak var forwardedProgressDelegate: LocalProcessDelegate?
+  var historyData: [UInt8] = []
   
   private enum CodingKeys : String, CodingKey {
     case id, name, command, directory
@@ -84,6 +85,7 @@ class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
   }
   
   func dataReceived(slice: ArraySlice<UInt8>) {
+    historyData.append(contentsOf: slice)
     DispatchQueue.main.async {
       self.forwardedProgressDelegate?.dataReceived(slice: slice)
     }

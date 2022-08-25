@@ -19,6 +19,7 @@ struct TermView: NSViewRepresentable {
   
   func updateNSView(_ nsView: MacLocalProcessTerminalView, context: Context) {
     project.forwardedProgressDelegate = nsView
+    nsView.feed(byteArray: project.historyData[...])
     applyTheme(nsView, theme: theme)
   }
   
