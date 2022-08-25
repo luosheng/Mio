@@ -14,12 +14,7 @@ enum ProjectAction {
   case run(Project)
 }
 
-struct ProjectEnvironment: Identifiable {
-  var id: String {
-    get {
-      name
-    }
-  }
+struct ProjectEnvironment: Codable {
   var name: String
   var value: String
 }
@@ -38,7 +33,7 @@ class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
   var historyData: [UInt8] = []
   
   private enum CodingKeys : String, CodingKey {
-    case id, name, command, directory
+    case id, name, command, directory, environments
   }
   
   init(name: String, command: String, directory: String) {
@@ -60,6 +55,7 @@ class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
     try container.encode(name, forKey: .name)
     try container.encode(command, forKey: .command)
     try container.encode(directory, forKey: .directory)
+    try container.encode(environments, forKey: .environments)
   }
   
   required init(from decoder: Decoder) throws {
@@ -68,6 +64,7 @@ class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
     name = try container.decode(String.self, forKey: .name)
     command = try container.decode(String.self, forKey: .command)
     directory = try container.decode(String.self, forKey: .directory)
+    environments = try container.decode([ProjectEnvironment].self, forKey: .environments)
     
     self.process = LocalProcess(delegate: self, dispatchQueue: .global())
   }
