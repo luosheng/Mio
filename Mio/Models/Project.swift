@@ -9,16 +9,6 @@ import Foundation
 import SwiftTerm
 import Combine
 
-enum ProjectAction {
-  case terminate
-  case run(Project)
-}
-
-struct ProjectEnvironment: Codable {
-  var name: String
-  var value: String
-}
-
 class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
   
   @Published var id: UUID
@@ -26,7 +16,7 @@ class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
   @Published var command: String
   @Published var directory: String
   @Published var running: Bool = false
-  @Published var environments: [ProjectEnvironment] = []
+  @Published var environments: [ProjectEnv] = []
   
   var process: LocalProcess!
   weak var forwardedProgressDelegate: LocalProcessDelegate?
@@ -64,7 +54,7 @@ class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
     name = try container.decode(String.self, forKey: .name)
     command = try container.decode(String.self, forKey: .command)
     directory = try container.decode(String.self, forKey: .directory)
-    environments = try container.decode([ProjectEnvironment].self, forKey: .environments)
+    environments = try container.decode([ProjectEnv].self, forKey: .environments)
     
     self.process = LocalProcess(delegate: self, dispatchQueue: .global())
   }
