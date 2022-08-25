@@ -14,8 +14,7 @@ struct ProjectView: View {
   
   var body: some View {
     VStack {
-      project.ui
-//      TermView(project: project, theme: colorScheme == .light ? Themes.light : Themes.dark)
+      project.ui.theme(colorScheme == .light ? Themes.light : Themes.dark)
     }
     .navigationTitle(project.name)
     .navigationSubtitle(project.command)
