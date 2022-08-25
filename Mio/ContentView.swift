@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+  @EnvironmentObject var pref: Preferences
+  
   var body: some View {
     NavigationView {
       Sidebar()
     }
-    .preferredColorScheme(.dark)
+    .preferredColorScheme(pref.appearance.toColorScheme())
   }
 }
 

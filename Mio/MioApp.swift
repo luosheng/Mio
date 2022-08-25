@@ -11,12 +11,16 @@ import SwiftUI
 struct MioApp: App {
   var body: some Scene {
     WindowGroup {
-      ContentView().environmentObject(Store.shared)
+      ContentView()
+        .environmentObject(Store.shared)
+        .environmentObject(Preferences())
     }
     .windowToolbarStyle(.unifiedCompact)
     
     Settings {
-      SettingsView().environmentObject(Store.shared)
+      SettingsView()
+        .environmentObject(Store.shared)
+        .environmentObject(Preferences())
     }
   }
 }
