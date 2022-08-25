@@ -35,7 +35,7 @@ class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
     self.command = command
     self.directory = directory
     
-    self.process = LocalProcess(delegate: self)
+    self.process = LocalProcess(delegate: self, dispatchQueue: .global())
   }
   
   convenience init(name: String, command: String) {
@@ -84,7 +84,9 @@ class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
   }
   
   func dataReceived(slice: ArraySlice<UInt8>) {
-    self.forwardedProgressDelegate?.dataReceived(slice: slice)
+    DispatchQueue.main.async {
+      self.forwardedProgressDelegate?.dataReceived(slice: slice)
+    }
   }
   
   func getWindowSize() -> winsize {
