@@ -31,7 +31,7 @@ struct EnvironmentField: View {
         .font(.footnote)
     }
     .sheet(isPresented: $showEnvEditor) {
-      EnvironmentEditor(environments: $environments)
+      EnvironmentEditor(presented: $showEnvEditor, environments: $environments)
     }
   }
 }
