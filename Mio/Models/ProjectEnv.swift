@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct ProjectEnv: Codable {
+struct ProjectEnv: Codable, Identifiable {
+  var id: UUID = UUID()
   var name: String
   var value: String
   
