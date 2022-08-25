@@ -8,14 +8,21 @@
 import SwiftUI
 
 struct EnvironmentField: View {
-  @Binding var text: String
+  @Binding var environments: [ProjectEnv]
+  @State var showEnvEditor = false
   
   var body: some View {
-    VStack {
+    let text = Binding {
+      ProjectEnv.toString(envs: self.environments)
+    } set: { str in
+      self.environments = ProjectEnv.parse(str: str)
+    }
+    
+    return VStack {
       HStack {
-        TextField("Environments", text: $text)
+        TextField("Environments", text: text)
         Button {
-          
+          showEnvEditor = true
         } label: {
           Image(systemName: "square.and.pencil")
         }
@@ -23,11 +30,14 @@ struct EnvironmentField: View {
       Text("Environments are separated by semicolons")
         .font(.footnote)
     }
+    .sheet(isPresented: $showEnvEditor) {
+      EnvironmentEditor(environments: $environments)
+    }
   }
 }
 
 struct EnvironmentField_Previews: PreviewProvider {
   static var previews: some View {
-    EnvironmentField(text: .constant("A=B;C=D"))
+    EnvironmentField(environments: .constant([ProjectEnv(name: "NODE_ENV", value: "production")]))
   }
 }

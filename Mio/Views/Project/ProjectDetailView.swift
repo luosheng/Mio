@@ -14,13 +14,7 @@ struct ProjectDetailView: View {
   @EnvironmentObject var store: Store
 
   var body: some View {
-    let envText = Binding {
-      ProjectEnv.toString(envs: self.project.environments)
-    } set: { str in
-      self.project.environments = ProjectEnv.parse(str: str)
-    }
-    
-    return VStack {
+    VStack {
       Text("Project")
         .font(.title)
         .padding()
@@ -31,7 +25,7 @@ struct ProjectDetailView: View {
           panel.canChooseDirectories = true
         }
         TextField("Command", text: $project.command)
-        EnvironmentField(text: envText)
+        EnvironmentField(environments: $project.environments)
       }
       .padding()
       
