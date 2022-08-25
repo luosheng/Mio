@@ -33,8 +33,12 @@ struct Sidebar: View {
         } label: {
           Image(systemName: "plus")
         }
+        .buttonStyle(.plain)
+        .padding(8)
+        
+        Spacer()
       }
-      .padding()
+      .overlay(Divider(), alignment: .top)
     }
     .background(.background)
     .toolbar {
