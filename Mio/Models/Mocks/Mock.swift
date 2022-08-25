@@ -7,10 +7,14 @@
 
 import Foundation
 
+let mockProject = Project(name: "Print Env", command: "printenv", directory: "/", environments: [
+  ProjectEnv(name: "POP_TEST", value: "1")
+])
+
 let mockProjects = [
-  Project(name: "Print Env", command: "printenv"),
+  mockProject,
   Project(name: "Color Test", command: "msgcat --color=test"),
-  Project(name: "Change Dir", command: "ls", directory: "/Applications/"),
+  Project(name: "Change Dir", command: "ls", directory: "/Applications/", environments: []),
 ]
 
 let mockStore = Store(projects: mockProjects)

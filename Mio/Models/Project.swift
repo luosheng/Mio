@@ -15,8 +15,8 @@ class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
   @Published var name: String
   @Published var command: String
   @Published var directory: String
+  @Published var environments: [ProjectEnv]
   @Published var running: Bool = false
-  @Published var environments: [ProjectEnv] = []
   
   var process: LocalProcess!
   weak var forwardedProgressDelegate: LocalProcessDelegate?
@@ -26,17 +26,23 @@ class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
     case id, name, command, directory, environments
   }
   
-  init(name: String, command: String, directory: String) {
+  init(name: String, command: String, directory: String, environments: [ProjectEnv]) {
     self.id = UUID()
     self.name = name
     self.command = command
     self.directory = directory
+    self.environments = environments
     
     self.process = LocalProcess(delegate: self, dispatchQueue: .global())
   }
   
   convenience init(name: String, command: String) {
-    self.init(name: name, command: command, directory: FileManager.default.homeDirectoryForCurrentUser.path)
+    self.init(
+      name: name,
+      command: command,
+      directory: FileManager.default.homeDirectoryForCurrentUser.path,
+      environments: []
+    )
   }
   
   func encode(to encoder: Encoder) throws {
@@ -56,6 +62,8 @@ class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
     directory = try container.decode(String.self, forKey: .directory)
     if let environments = try? container.decodeIfPresent([ProjectEnv].self, forKey: .environments) {
       self.environments = environments
+    } else {
+      self.environments = []
     }
     
     self.process = LocalProcess(delegate: self, dispatchQueue: .global())
