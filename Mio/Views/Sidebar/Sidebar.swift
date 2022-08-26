@@ -42,7 +42,7 @@ struct Sidebar: View {
         Spacer()
         
         Button {
-          
+          store.selectedProject?.remove()
         } label: {
           Image(systemName: "minus")
         }

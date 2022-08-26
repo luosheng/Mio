@@ -102,6 +102,7 @@ class Project: Codable, Hashable, Identifiable, ObservableObject, ProcessTermina
       return
     }
     self.stop()
+    Store.shared.selectedProject = nil
     Store.shared.projects.remove(at: index)
     Store.shared.save()
   }
