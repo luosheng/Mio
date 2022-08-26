@@ -12,8 +12,13 @@ struct SidebarItem: View {
   
   var body: some View {
     VStack {
-      Text(project.name)
-        .font(.title3)
+      HStack {
+        Text(project.name)
+        Spacer()
+        Circle()
+          .frame(width: 8, height: 8)
+          .foregroundColor(project.running ? Color.green : Color.gray)
+      }
     }
   }
 }
