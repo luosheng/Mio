@@ -83,7 +83,19 @@ class Project: Codable, Identifiable, ObservableObject, ProcessTerminalViewDeleg
   }
   
   func stop() {
+    guard self.running else {
+      return
+    }
     self.ui.nsView.process.terminate()
+  }
+  
+  func remove() {
+    guard let index = Store.shared.projects.firstIndex(where: { $0.id == self.id }) else {
+      return
+    }
+    self.stop()
+    Store.shared.projects.remove(at: index)
+    Store.shared.save()
   }
   
   // MARK: - ProgressTerminalViewDelegate

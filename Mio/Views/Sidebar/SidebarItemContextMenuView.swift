@@ -20,6 +20,12 @@ struct SidebarItemContextMenuView: View {
         project.stop()
       }
       .disabled(!project.running)
+      
+      Divider()
+      
+      Button("Remove") {
+        project.remove()
+      }
     }
   }
 }
