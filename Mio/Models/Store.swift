@@ -34,7 +34,9 @@ class Store: ObservableObject {
     try? FileManager.default.createDirectory(at: saveUrl, withIntermediateDirectories: true)
     projectsSavePath = saveUrl.appendingPathComponent("projects.json")
     
-    self.load()
+    if (self.projects.count == 0) {
+      self.load()
+    }
   }
   
   func save() {
