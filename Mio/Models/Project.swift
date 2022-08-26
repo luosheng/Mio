@@ -6,10 +6,10 @@
 //
 
 import Foundation
-import SwiftTerm
 import Combine
+import SwiftTerm
 
-class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
+class Project: Codable, Identifiable, ObservableObject, ProcessTerminalViewDelegate {
   
   @Published var id: UUID
   @Published var name: String
@@ -18,8 +18,6 @@ class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
   @Published var environments: [ProjectEnv]
   @Published var running: Bool = false
   
-  var process: LocalProcess!
-  weak var forwardedProgressDelegate: LocalProcessDelegate?
   var ui: TermView = .init()
   
   private enum CodingKeys : String, CodingKey {
@@ -70,44 +68,41 @@ class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
   }
   
   private func setup() {
-    self.forwardedProgressDelegate = self.ui.nsView
-    self.process = LocalProcess(delegate: self, dispatchQueue: .global())
-  }
-  
-  private func getFullEnvironments() -> [String] {
-    Terminal.getEnvironmentVariables() + self.environments.map { $0.toString() }
+    self.ui.nsView.processDelegate = self
   }
   
   func run() {
     self.running = true
     FileManager.default.changeCurrentDirectoryPath(directory)
-    self.process.startProcess(
+    self.ui.nsView.startProcess(
       executable: ShellService.shared.shellPath,
       args: ["-l", "-i", "-c", "\(ShellService.shared.getPreCommand());\(command)"],
-      environment: getFullEnvironments(),
+      environment: self.environments.map { $0.toString() },
       execName: nil
     )
   }
   
   func stop() {
-    self.process.terminate()
+    self.ui.nsView.process.terminate()
   }
   
-  // MARK: - LocalProcessDelegate
+  // MARK: - ProgressTerminalViewDelegate
   
-  func processTerminated(_ source: LocalProcess, exitCode: Int32?) {
+  func sizeChanged(source: ProcessTerminalView, newCols: Int, newRows: Int) {
+    
+  }
+  
+  func setTerminalTitle(source: ProcessTerminalView, title: String) {
+    
+  }
+  
+  func hostCurrentDirectoryUpdate(source: TerminalView, directory: String?) {
+    
+  }
+  
+  func processTerminated(source: TerminalView, exitCode: Int32?) {
     DispatchQueue.main.async {
       self.running = false
     }
-  }
-  
-  func dataReceived(slice: ArraySlice<UInt8>) {
-    DispatchQueue.main.async {
-      self.ui.nsView.feed(byteArray: slice)
-    }
-  }
-  
-  func getWindowSize() -> winsize {
-    return self.forwardedProgressDelegate?.getWindowSize() ?? winsize()
   }
 }

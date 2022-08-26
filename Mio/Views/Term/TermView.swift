@@ -10,13 +10,13 @@ import SwiftTerm
 import Combine
 
 struct TermView: NSViewRepresentable {
-  var nsView = LocalProcessTerminalView(frame: .init(x: 0, y: 0, width: 650, height: 405))
+  var nsView = ProcessTerminalView(frame: .init(x: 0, y: 0, width: 650, height: 405))
   
-  func makeNSView(context: Context) -> LocalProcessTerminalView {
+  func makeNSView(context: Context) -> ProcessTerminalView {
     nsView
   }
   
-  func updateNSView(_ nsView: LocalProcessTerminalView, context: Context) {
+  func updateNSView(_ nsView: ProcessTerminalView, context: Context) {
   }
   
   func theme(_ theme: ThemeColor) -> some View {
