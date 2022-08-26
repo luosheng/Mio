@@ -17,6 +17,18 @@ struct ProjectView: View {
       project.ui
         .theme(colorScheme == .light ? Themes.light : Themes.dark)
         .frame(minWidth: 650, minHeight: 405)
+      HStack {
+        Spacer()
+        Button {
+          
+        } label: {
+          Image(systemName: "trash")
+        }
+        .frame(width: 16, height: 16)
+        .buttonStyle(.plain)
+        .padding(8)
+      }
+      .overlay(Divider(), alignment: .top)
     }
     .navigationTitle(project.name)
     .navigationSubtitle(project.command)

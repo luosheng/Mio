@@ -33,6 +33,7 @@ struct Sidebar: View {
         } label: {
           Image(systemName: "plus")
         }
+        .frame(width: 16, height: 16)
         .buttonStyle(.plain)
         .padding(8)
         
