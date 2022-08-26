@@ -102,7 +102,9 @@ class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
   }
   
   func dataReceived(slice: ArraySlice<UInt8>) {
-    self.ui.nsView.feed(byteArray: slice)
+    DispatchQueue.main.async {
+      self.ui.nsView.feed(byteArray: slice)
+    }
   }
   
   func getWindowSize() -> winsize {
