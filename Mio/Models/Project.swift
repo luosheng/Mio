@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import SwiftTerm
 
-class Project: Codable, Identifiable, ObservableObject, ProcessTerminalViewDelegate {
+class Project: Codable, Hashable, Identifiable, ObservableObject, ProcessTerminalViewDelegate {
   
   @Published var id: UUID
   @Published var name: String
@@ -22,6 +22,14 @@ class Project: Codable, Identifiable, ObservableObject, ProcessTerminalViewDeleg
   
   private enum CodingKeys : String, CodingKey {
     case id, name, command, directory, environments
+  }
+  
+  static func == (lhs: Project, rhs: Project) -> Bool {
+    lhs.id == rhs.id
+  }
+  
+  func hash(into hasher: inout Hasher) {
+    
   }
   
   init(name: String, command: String, directory: String, environments: [ProjectEnv]) {

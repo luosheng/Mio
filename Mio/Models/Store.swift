@@ -11,6 +11,8 @@ class Store: ObservableObject {
   static let shared: Store = .init()
   
   @Published var projects: [Project]
+  @Published var selectedProject: Project?
+  
   var projectsSavePath: URL
   
   convenience init() {

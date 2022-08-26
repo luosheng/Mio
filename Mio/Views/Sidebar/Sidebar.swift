@@ -15,9 +15,11 @@ struct Sidebar: View {
     VStack {
       List {
         ForEach(store.projects) { p in
-          NavigationLink(destination: ProjectView(project: p)) {
+          NavigationLink(tag: p, selection: $store.selectedProject, destination: {
+            ProjectView(project: p)
+          }, label: {
             SidebarItem(project: p)
-          }
+          })
           .contextMenu {
             SidebarItemContextMenuView(project: p)
           }
@@ -38,6 +40,16 @@ struct Sidebar: View {
         .padding(8)
         
         Spacer()
+        
+        Button {
+          
+        } label: {
+          Image(systemName: "minus")
+        }
+        .disabled(store.selectedProject == nil)
+        .frame(width: 16, height: 16)
+        .buttonStyle(.plain)
+        .padding(8)
       }
       .overlay(Divider(), alignment: .top)
     }
