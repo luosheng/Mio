@@ -41,7 +41,6 @@ struct Sidebar: View {
       }
       .overlay(Divider(), alignment: .top)
     }
-    .background(.background)
     .toolbar {
       ToolbarItem(placement: .status) {
         Button(action: {
