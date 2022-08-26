@@ -74,13 +74,17 @@ class Project: Codable, Identifiable, ObservableObject, LocalProcessDelegate {
     self.process = LocalProcess(delegate: self, dispatchQueue: .global())
   }
   
+  private func getFullEnvironments() -> [String] {
+    Terminal.getEnvironmentVariables() + self.environments.map { $0.toString() }
+  }
+  
   func run() {
     self.running = true
     FileManager.default.changeCurrentDirectoryPath(directory)
     self.process.startProcess(
       executable: ShellService.shared.shellPath,
       args: ["-l", "-i", "-c", "\(ShellService.shared.getPreCommand());\(command)"],
-      environment: self.environments.map { $0.toString() },
+      environment: getFullEnvironments(),
       execName: nil
     )
   }
