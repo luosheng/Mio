@@ -20,11 +20,14 @@ struct TermView: NSViewRepresentable {
   }
   
   func theme(_ theme: ThemeColor) -> some View {
-    nsView.installColors(theme.ansi)
-    let t = nsView.getTerminal()
-    nsView.setBackgroundColor(source: t, color: theme.background)
-    nsView.setForegroundColor(source: t, color: theme.foreground)
-    
+    DispatchQueue.main.async {
+      nsView.installColors(theme.ansi)
+      let t = nsView.getTerminal()
+      let bgColor = theme.background
+      nsView.setBackgroundColor(source: t, color: bgColor)
+      nsView.setForegroundColor(source: t, color: theme.foreground)
+      nsView.layer?.backgroundColor = bgColor.toNSColor().cgColor
+    }
     return self
   }
 }
