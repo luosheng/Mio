@@ -54,6 +54,8 @@ class Store: ObservableObject {
       return
     }
     self.projects = projects
+    
+    self.projects.filter { $0.autoStarts }.forEach { $0.run() }
   }
   
   func moveProject(from: IndexSet, to index: Int) {
