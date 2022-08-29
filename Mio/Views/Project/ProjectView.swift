@@ -39,12 +39,14 @@ struct ProjectView: View {
         } label: {
           Image(systemName: "square.and.pencil")
         }
+        .keyboardShortcut(.init("I"), modifiers: .command)
         
         Button {
           project.run()
         } label: {
           Image(systemName: "play.fill")
         }
+        .keyboardShortcut(.init("R"), modifiers: .command)
         .disabled(project.running)
         
         Button {
@@ -52,6 +54,7 @@ struct ProjectView: View {
         } label: {
           Image(systemName: "stop.fill")
         }
+        .keyboardShortcut(.init("."), modifiers: .command)
         .disabled(!project.running)
       }
     }
