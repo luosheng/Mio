@@ -26,6 +26,8 @@ struct ProjectDetailView: View {
         }
         TextField("Command", text: $project.command)
         EnvironmentField(environments: $project.environments)
+        Toggle("Launch at start", isOn: $project.autoStarts)
+          .toggleStyle(.switch)
       }
       .padding()
       
@@ -52,7 +54,7 @@ struct ProjectDetailView: View {
       }
       .padding()
     }
-    .frame(width: 600, height: 300, alignment: .topLeading)
+    .frame(width: 600, height: 350, alignment: .topLeading)
   }
 }
 

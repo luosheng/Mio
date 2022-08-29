@@ -16,12 +16,13 @@ class Project: Codable, Hashable, Identifiable, ObservableObject, ProcessTermina
   @Published var command: String
   @Published var directory: String
   @Published var environments: [ProjectEnv]
+  @Published var autoStarts: Bool
   @Published var running: Bool = false
   
   var ui: TermView = .init()
   
   private enum CodingKeys : String, CodingKey {
-    case id, name, command, directory, environments
+    case id, name, command, directory, environments, autoStarts
   }
   
   static func == (lhs: Project, rhs: Project) -> Bool {
@@ -38,6 +39,7 @@ class Project: Codable, Hashable, Identifiable, ObservableObject, ProcessTermina
     self.command = command
     self.directory = directory
     self.environments = environments
+    self.autoStarts = false
     
     setup()
   }
@@ -58,6 +60,7 @@ class Project: Codable, Hashable, Identifiable, ObservableObject, ProcessTermina
     try container.encode(command, forKey: .command)
     try container.encode(directory, forKey: .directory)
     try container.encode(environments, forKey: .environments)
+    try container.encode(autoStarts, forKey: .autoStarts)
   }
   
   required init(from decoder: Decoder) throws {
@@ -71,6 +74,7 @@ class Project: Codable, Hashable, Identifiable, ObservableObject, ProcessTermina
     } else {
       self.environments = []
     }
+    autoStarts = (try? container.decodeIfPresent(Bool.self, forKey: .autoStarts)) ?? false
     
     setup()
   }
