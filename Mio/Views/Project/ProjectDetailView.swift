@@ -15,8 +15,8 @@ struct ProjectDetailView: View {
 
   var body: some View {
     VStack {
-      Text("Project")
-        .font(.title)
+      Text(editing ? "Edit project" : "Add project")
+        .font(.title2)
         .padding()
       Form {
         TextField("Name", text: $project.name)
