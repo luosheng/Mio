@@ -83,19 +83,6 @@ public class ProcessTerminalView: XTermView, XTermViewDelegate, LocalProcessDele
   public weak var processDelegate: ProcessTerminalViewDelegate?
   
   /**
-   * This method is invoked to notify the client of the new columsn and rows that have been set by the UI
-   */
-  public func sizeChanged(source: TerminalView, newCols: Int, newRows: Int) {
-    guard process.running else {
-      return
-    }
-    var size = getWindowSize()
-    let _ = PseudoTerminalHelpers.setWinSize(masterPtyDescriptor: process.childfd, windowSize: &size)
-    
-    processDelegate?.sizeChanged(source: self, newCols: newCols, newRows: newRows)
-  }
-  
-  /**
    * Invoke this method to notify the processDelegate of the new title for the terminal window
    */
   public func setTerminalTitle(source: TerminalView, title: String) {
@@ -145,6 +132,17 @@ public class ProcessTerminalView: XTermView, XTermViewDelegate, LocalProcessDele
   public func onData(_ data: String) {
     process.send(data: ArraySlice(data.utf8))
   }
+  
+  public func didUpdateSize(_ size: XTerm.TermSize) {
+    guard process.running else {
+      return
+    }
+    var size = getWindowSize()
+    let _ = PseudoTerminalHelpers.setWinSize(masterPtyDescriptor: process.childfd, windowSize: &size)
+    
+    processDelegate?.sizeChanged(source: self, newCols: Int(size.ws_col), newRows: Int(size.ws_row))
+  }
+  
   
   /**
    * Implements the LocalProcessDelegate method.
