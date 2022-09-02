@@ -111,6 +111,14 @@ class Project: Codable, Hashable, Identifiable, ObservableObject, ProcessTermina
     Store.shared.save()
   }
   
+  func clear() {
+    DispatchQueue.main.async {
+      Task {
+        await self.ui.nsView.clear()
+      }
+    }
+  }
+  
   // MARK: - ProgressTerminalViewDelegate
   
   func sizeChanged(source: ProcessTerminalView, newCols: Int, newRows: Int) {
