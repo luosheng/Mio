@@ -125,7 +125,7 @@ class Project: Codable, Hashable, Identifiable, ObservableObject, ProcessTermina
     
   }
   
-  func processTerminated(source: TerminalView, exitCode: Int32?) {
+  func processTerminated(source: ProcessTerminalView, exitCode: Int32?) {
     DispatchQueue.main.async {
       self.running = false
     }

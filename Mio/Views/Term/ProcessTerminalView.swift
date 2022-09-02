@@ -6,6 +6,7 @@
 //
 import SwiftTerm
 import Foundation
+import XTerm
 
 public protocol ProcessTerminalViewDelegate: AnyObject {
   /**
@@ -36,7 +37,7 @@ public protocol ProcessTerminalViewDelegate: AnyObject {
    * - Parameter source: the local process that terminated
    * - Parameter exitCode: the exit code returned by the process, or nil if this was an error caused during the IO reading/writing
    */
-  func processTerminated(source: TerminalView, exitCode: Int32?)
+  func processTerminated(source: ProcessTerminalView, exitCode: Int32?)
 }
 
 /**
@@ -57,7 +58,8 @@ public protocol ProcessTerminalViewDelegate: AnyObject {
  * the internal working of `LocalProcessTerminalView`.   If you must change the `delegate`
  * make sure that you proxy the values in your implementation to the values set after initializing this instance
  */
-public class ProcessTerminalView: TerminalView, TerminalViewDelegate, LocalProcessDelegate {
+public class ProcessTerminalView: XTermView, XTermViewDelegate, LocalProcessDelegate {
+  
   var process: LocalProcess!
   
   public override init(frame: CGRect) {
@@ -71,7 +73,7 @@ public class ProcessTerminalView: TerminalView, TerminalViewDelegate, LocalProce
   }
   
   func setup() {
-    terminalDelegate = self
+    delegate = self
     process = LocalProcess(delegate: self)
   }
   
@@ -139,6 +141,11 @@ public class ProcessTerminalView: TerminalView, TerminalViewDelegate, LocalProce
     )
   }
   
+  
+  public func onData(_ data: String) {
+    process.send(data: ArraySlice(data.utf8))
+  }
+  
   /**
    * Implements the LocalProcessDelegate method.
    */
@@ -150,7 +157,12 @@ public class ProcessTerminalView: TerminalView, TerminalViewDelegate, LocalProce
    * Implements the LocalProcessDelegate.dataReceived method
    */
   public func dataReceived(slice: ArraySlice<UInt8>) {
-    feed(byteArray: slice)
+    guard let string = String(bytes: slice, encoding: .utf8) else {
+      return
+    }
+    Task {
+      await write(string)
+    }
   }
   
   /**
@@ -158,8 +170,8 @@ public class ProcessTerminalView: TerminalView, TerminalViewDelegate, LocalProce
    */
   public func getWindowSize() -> winsize {
     let f: CGRect = self.frame
-    let terminal = getTerminal()
-    return winsize(ws_row: UInt16(terminal.rows), ws_col: UInt16(terminal.cols), ws_xpixel: UInt16(f.width), ws_ypixel: UInt16(f.height))
+    let s = self.size
+    return winsize(ws_row: UInt16(s.rows), ws_col: UInt16(s.cols), ws_xpixel: UInt16(f.width), ws_ypixel: UInt16(f.height))
   }
   
 }
