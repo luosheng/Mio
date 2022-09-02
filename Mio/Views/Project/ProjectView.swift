@@ -20,7 +20,7 @@ struct ProjectView: View {
       HStack {
         Spacer()
         Button {
-          
+          project.clear()
         } label: {
           Image(systemName: "trash")
         }
