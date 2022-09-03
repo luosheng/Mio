@@ -538,8 +538,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/luosheng/XTermSwift.git";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = revision;
+				revision = db311cf880a50f87a8df13c70cc28b2b6d0bb6af;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
