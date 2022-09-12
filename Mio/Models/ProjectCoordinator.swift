@@ -20,9 +20,13 @@ class ProjectCoordinator: LocalProcessDelegate, XTermViewDelegate {
   unowned var view: XTermView! {
     didSet {
       view.delegate = self
+      Task {
+        await view.write(history)
+      }
     }
   }
   var delegate: ProjectCoordinatorDelegate?
+  var history: String = ""
   
   init() {
     setup()
@@ -70,6 +74,7 @@ class ProjectCoordinator: LocalProcessDelegate, XTermViewDelegate {
     guard let string = String(bytes: slice, encoding: .utf8) else {
       return
     }
+    history.append(string)
     Task {
       await view.write(string)
     }

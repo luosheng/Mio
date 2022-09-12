@@ -20,7 +20,6 @@ class Project: Codable, Hashable, Identifiable, ObservableObject, ProjectCoordin
   @Published var running: Bool = false
   
   var coordinator: ProjectCoordinator!
-  var history: String = ""
   
   private enum CodingKeys : String, CodingKey {
     case id, name, command, directory, environments, autoStarts
@@ -121,12 +120,9 @@ class Project: Codable, Hashable, Identifiable, ObservableObject, ProjectCoordin
   
   func didUpdateRunningState(_ running: Bool) {
     self.running = running
-    if (!running) {
-      history = ""
-    }
   }
   
   func didReceivedDataString(_ data: String) {
-    history.append(data)
+    
   }
 }
