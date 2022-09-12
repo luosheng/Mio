@@ -539,7 +539,7 @@
 			repositoryURL = "https://github.com/luosheng/XTermSwift.git";
 			requirement = {
 				kind = revision;
-				revision = db311cf880a50f87a8df13c70cc28b2b6d0bb6af;
+				revision = 7de2dc3b7bf7712d97f4733ddf77f69db09e8c86;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
