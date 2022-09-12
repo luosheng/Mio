@@ -14,9 +14,9 @@ struct ProjectView: View {
   
   var body: some View {
     VStack {
-      project.ui
+      TermView()
         .theme(colorScheme == .light ? Themes.light : Themes.dark)
-        .frame(minWidth: 650, minHeight: 405)
+        .coordinate(project.coordinator)
       HStack {
         Spacer()
         Button {

@@ -39,6 +39,9 @@ class ProjectCoordinator: LocalProcessDelegate, XTermViewDelegate {
   }
   
   public func startProcess(executable: String = "/bin/bash", args: [String] = [], environment: [String] = [], execName: String? = nil) {
+    guard !self.process.running else {
+      return
+    }
     process.startProcess(
       executable: executable,
       args: args,
@@ -49,6 +52,9 @@ class ProjectCoordinator: LocalProcessDelegate, XTermViewDelegate {
   }
   
   public func terminate() {
+    guard self.process.running else {
+      return
+    }
     process.terminate()
   }
   

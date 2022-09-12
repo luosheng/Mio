@@ -6,28 +6,25 @@
 //
 
 import SwiftUI
-import SwiftTerm
 import Combine
+import XTerm
 
 struct TermView: NSViewRepresentable {
-  var nsView = ProcessTerminalView(frame: .init(x: 0, y: 0, width: 650, height: 405))
+  var nsView = XTermView(frame: .init(x: 0, y: 0, width: 650, height: 405))
   
-  func makeNSView(context: Context) -> ProcessTerminalView {
+  func makeNSView(context: Context) -> XTermView {
     nsView
   }
   
-  func updateNSView(_ nsView: ProcessTerminalView, context: Context) {
+  func updateNSView(_ nsView: XTermView, context: Context) {
   }
   
-  func theme(_ theme: ThemeColor) -> some View {
-//    DispatchQueue.main.async {
-//      nsView.installColors(theme.ansi)
-//      let t = nsView.getTerminal()
-//      let bgColor = theme.background
-//      nsView.setBackgroundColor(source: t, color: bgColor)
-//      nsView.setForegroundColor(source: t, color: theme.foreground)
-//      nsView.layer?.backgroundColor = bgColor.toNSColor().cgColor
-//    }
+  func theme(_ theme: ThemeColor) -> TermView {
+    return self
+  }
+  
+  func coordinate(_ coordinator: ProjectCoordinator) -> TermView {
+    coordinator.view = nsView
     return self
   }
 }

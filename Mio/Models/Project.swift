@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import SwiftTerm
 
-class Project: Codable, Hashable, Identifiable, ObservableObject, ProcessTerminalViewDelegate {
+class Project: Codable, Hashable, Identifiable, ObservableObject, ProjectCoordinatorDelegate {
   
   @Published var id: UUID
   @Published var name: String
@@ -19,7 +19,8 @@ class Project: Codable, Hashable, Identifiable, ObservableObject, ProcessTermina
   @Published var autoStarts: Bool
   @Published var running: Bool = false
   
-  var ui: TermView = .init()
+  var coordinator: ProjectCoordinator!
+  var history: String = ""
   
   private enum CodingKeys : String, CodingKey {
     case id, name, command, directory, environments, autoStarts
@@ -80,13 +81,13 @@ class Project: Codable, Hashable, Identifiable, ObservableObject, ProcessTermina
   }
   
   private func setup() {
-    self.ui.nsView.processDelegate = self
+    coordinator = ProjectCoordinator()
+    coordinator.delegate = self
   }
   
   func run() {
-    self.running = true
     FileManager.default.changeCurrentDirectoryPath(directory)
-    self.ui.nsView.startProcess(
+    self.coordinator.startProcess(
       executable: ShellService.shared.shellPath,
       args: ["-l", "-i", "-c", "\(ShellService.shared.getPreCommand());\(command)"],
       environment: self.environments.map { $0.toString() },
@@ -95,10 +96,7 @@ class Project: Codable, Hashable, Identifiable, ObservableObject, ProcessTermina
   }
   
   func stop() {
-    guard self.running else {
-      return
-    }
-    self.ui.nsView.process.terminate()
+    self.coordinator.terminate()
   }
   
   func remove() {
@@ -114,28 +112,21 @@ class Project: Codable, Hashable, Identifiable, ObservableObject, ProcessTermina
   func clear() {
     DispatchQueue.main.async {
       Task {
-        await self.ui.nsView.clear()
+        await self.coordinator.view.clear()
       }
     }
   }
   
-  // MARK: - ProgressTerminalViewDelegate
+  // MARK: - ProjectCoordinatorDelegate
   
-  func sizeChanged(source: ProcessTerminalView, newCols: Int, newRows: Int) {
-    
-  }
-  
-  func setTerminalTitle(source: ProcessTerminalView, title: String) {
-    
-  }
-  
-  func hostCurrentDirectoryUpdate(source: TerminalView, directory: String?) {
-    
-  }
-  
-  func processTerminated(source: ProcessTerminalView, exitCode: Int32?) {
-    DispatchQueue.main.async {
-      self.running = false
+  func didUpdateRunningState(_ running: Bool) {
+    self.running = running
+    if (!running) {
+      history = ""
     }
+  }
+  
+  func didReceivedDataString(_ data: String) {
+    history.append(data)
   }
 }

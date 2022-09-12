@@ -21,7 +21,6 @@
 		B30E473128B75A3600E8893E /* SettingGeneralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E473028B75A3600E8893E /* SettingGeneralView.swift */; };
 		B30E473528B75D5500E8893E /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E473428B75D5500E8893E /* Preferences.swift */; };
 		B30E473928B84CC900E8893E /* SwiftTermColor+NSColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E473828B84CC900E8893E /* SwiftTermColor+NSColor.swift */; };
-		B30E473B28B858C400E8893E /* ProcessTerminalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E473A28B858C400E8893E /* ProcessTerminalView.swift */; };
 		B3380E7328CED30A00D60216 /* ProjectCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3380E7228CED30A00D60216 /* ProjectCoordinator.swift */; };
 		B33B298428B4A903009CD8D7 /* MioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B298328B4A903009CD8D7 /* MioApp.swift */; };
 		B33B298628B4A903009CD8D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B298528B4A903009CD8D7 /* ContentView.swift */; };
@@ -51,7 +50,6 @@
 		B30E473028B75A3600E8893E /* SettingGeneralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingGeneralView.swift; sourceTree = "<group>"; };
 		B30E473428B75D5500E8893E /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		B30E473828B84CC900E8893E /* SwiftTermColor+NSColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftTermColor+NSColor.swift"; sourceTree = "<group>"; };
-		B30E473A28B858C400E8893E /* ProcessTerminalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessTerminalView.swift; sourceTree = "<group>"; };
 		B3380E7228CED30A00D60216 /* ProjectCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCoordinator.swift; sourceTree = "<group>"; };
 		B33B298028B4A903009CD8D7 /* Mio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B33B298328B4A903009CD8D7 /* MioApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MioApp.swift; sourceTree = "<group>"; };
@@ -230,7 +228,6 @@
 			isa = PBXGroup;
 			children = (
 				B3BA458728B4C12B002F11C2 /* TermView.swift */,
-				B30E473A28B858C400E8893E /* ProcessTerminalView.swift */,
 			);
 			path = Term;
 			sourceTree = "<group>";
@@ -326,7 +323,6 @@
 				B30E472A28B744B100E8893E /* EnvironmentEditor.swift in Sources */,
 				B35BCCD128B4ACB200F1779E /* Project.swift in Sources */,
 				B3BA457F28B4B6C7002F11C2 /* SidebarItem.swift in Sources */,
-				B30E473B28B858C400E8893E /* ProcessTerminalView.swift in Sources */,
 				B3380E7328CED30A00D60216 /* ProjectCoordinator.swift in Sources */,
 				B30E470228B5217400E8893E /* ThemeColor.swift in Sources */,
 				B30E473928B84CC900E8893E /* SwiftTermColor+NSColor.swift in Sources */,
