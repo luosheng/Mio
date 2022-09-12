@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		B30E470028B4FC1300E8893E /* ShellService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E46FF28B4FC1300E8893E /* ShellService.swift */; };
-		B30E470228B5217400E8893E /* ThemeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E470128B5217400E8893E /* ThemeColor.swift */; };
-		B30E470628B523A600E8893E /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E470528B523A600E8893E /* Themes.swift */; };
 		B30E470D28B5981600E8893E /* ProjectDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E470C28B5981600E8893E /* ProjectDetailView.swift */; };
 		B30E471028B59E3E00E8893E /* PathChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E470F28B59E3E00E8893E /* PathChooser.swift */; };
 		B30E471228B5D29800E8893E /* SidebarItemContextMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E471128B5D29800E8893E /* SidebarItemContextMenuView.swift */; };
@@ -38,8 +36,6 @@
 
 /* Begin PBXFileReference section */
 		B30E46FF28B4FC1300E8893E /* ShellService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShellService.swift; sourceTree = "<group>"; };
-		B30E470128B5217400E8893E /* ThemeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeColor.swift; sourceTree = "<group>"; };
-		B30E470528B523A600E8893E /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
 		B30E470C28B5981600E8893E /* ProjectDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectDetailView.swift; sourceTree = "<group>"; };
 		B30E470F28B59E3E00E8893E /* PathChooser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathChooser.swift; sourceTree = "<group>"; };
 		B30E471128B5D29800E8893E /* SidebarItemContextMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItemContextMenuView.swift; sourceTree = "<group>"; };
@@ -175,8 +171,6 @@
 				B3BA457528B4AD81002F11C2 /* Mocks */,
 				B35BCCD028B4ACB200F1779E /* Project.swift */,
 				B3BA457828B4ADCB002F11C2 /* Store.swift */,
-				B30E470128B5217400E8893E /* ThemeColor.swift */,
-				B30E470528B523A600E8893E /* Themes.swift */,
 				B30E472728B73FFB00E8893E /* ProjectEnv.swift */,
 				B30E473428B75D5500E8893E /* Preferences.swift */,
 				B3380E7228CED30A00D60216 /* ProjectCoordinator.swift */,
@@ -313,7 +307,6 @@
 				B3BA457928B4ADCB002F11C2 /* Store.swift in Sources */,
 				B30E470D28B5981600E8893E /* ProjectDetailView.swift in Sources */,
 				B30E473128B75A3600E8893E /* SettingGeneralView.swift in Sources */,
-				B30E470628B523A600E8893E /* Themes.swift in Sources */,
 				B33B298628B4A903009CD8D7 /* ContentView.swift in Sources */,
 				B30E471228B5D29800E8893E /* SidebarItemContextMenuView.swift in Sources */,
 				B30E471028B59E3E00E8893E /* PathChooser.swift in Sources */,
@@ -324,7 +317,6 @@
 				B35BCCD128B4ACB200F1779E /* Project.swift in Sources */,
 				B3BA457F28B4B6C7002F11C2 /* SidebarItem.swift in Sources */,
 				B3380E7328CED30A00D60216 /* ProjectCoordinator.swift in Sources */,
-				B30E470228B5217400E8893E /* ThemeColor.swift in Sources */,
 				B30E473928B84CC900E8893E /* SwiftTermColor+NSColor.swift in Sources */,
 				B3BA458828B4C12B002F11C2 /* TermView.swift in Sources */,
 				B3BA457D28B4AF38002F11C2 /* Sidebar.swift in Sources */,

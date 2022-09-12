@@ -12,6 +12,7 @@ import XTerm
 struct TermView: NSViewRepresentable {
   
   var projectCoordinator: ProjectCoordinator?
+  var theme: Theme = Theme.defaultLight
   
   func makeNSView(context: Context) -> XTermView {
     XTermView(frame: .zero)
@@ -19,10 +20,15 @@ struct TermView: NSViewRepresentable {
   
   func updateNSView(_ nsView: XTermView, context: Context) {
     projectCoordinator?.view = nsView
+    Task {
+      await nsView.applyTheme(theme: theme)
+    }
   }
   
-  func theme(_ theme: ThemeColor) -> TermView {
-    return self
+  func theme(_ theme: Theme) -> TermView {
+    var view = self
+    view.theme = theme
+    return view
   }
   
   func coordinate(_ coordinator: ProjectCoordinator) -> TermView {

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import XTerm
 
 struct ProjectView: View {
   @Environment(\.colorScheme) var colorScheme
@@ -15,7 +16,7 @@ struct ProjectView: View {
   var body: some View {
     VStack {
       TermView()
-        .theme(colorScheme == .light ? Themes.light : Themes.dark)
+        .theme(colorScheme == .light ? Theme.defaultLight : Theme.defaultDark)
         .coordinate(project.coordinator)
       HStack {
         Spacer()
