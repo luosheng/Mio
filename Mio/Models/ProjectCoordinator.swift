@@ -32,10 +32,11 @@ class ProjectCoordinator: LocalProcessDelegate, XTermViewDelegate {
     self.process = LocalProcess(delegate: self)
   }
   
-  private func getWinSize() -> winsize {
+  private func updateSize() {
     let frame: CGRect = view.frame
     let terminalSize = view.size
-    return winsize(ws_row: UInt16(terminalSize.rows), ws_col: UInt16(terminalSize.cols), ws_xpixel: UInt16(frame.width), ws_ypixel: UInt16(frame.height))
+    var size = winsize(ws_row: UInt16(terminalSize.rows), ws_col: UInt16(terminalSize.cols), ws_xpixel: UInt16(frame.width), ws_ypixel: UInt16(frame.height))
+    let _ = PseudoTerminalHelpers.setWinSize(masterPtyDescriptor: process.childfd, windowSize: &size)
   }
   
   public func startProcess(executable: String = "/bin/bash", args: [String] = [], environment: [String] = [], execName: String? = nil) {
@@ -48,6 +49,7 @@ class ProjectCoordinator: LocalProcessDelegate, XTermViewDelegate {
       environment: Terminal.getEnvironmentVariables() + environment,
       execName: execName
     )
+    updateSize()
     delegate?.didUpdateRunningState(true)
   }
   
@@ -88,8 +90,7 @@ class ProjectCoordinator: LocalProcessDelegate, XTermViewDelegate {
     guard process.running else {
       return
     }
-    var size = getWinSize()
-    let _ = PseudoTerminalHelpers.setWinSize(masterPtyDescriptor: process.childfd, windowSize: &size)
+    updateSize()
   }
   
 }
