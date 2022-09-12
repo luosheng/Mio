@@ -10,13 +10,15 @@ import Combine
 import XTerm
 
 struct TermView: NSViewRepresentable {
-  var nsView = XTermView(frame: .init(x: 0, y: 0, width: 650, height: 405))
+  
+  var projectCoordinator: ProjectCoordinator?
   
   func makeNSView(context: Context) -> XTermView {
-    nsView
+    XTermView(frame: .zero)
   }
   
   func updateNSView(_ nsView: XTermView, context: Context) {
+    projectCoordinator?.view = nsView
   }
   
   func theme(_ theme: ThemeColor) -> TermView {
@@ -24,7 +26,8 @@ struct TermView: NSViewRepresentable {
   }
   
   func coordinate(_ coordinator: ProjectCoordinator) -> TermView {
-    coordinator.view = nsView
-    return self
+    var view = self
+    view.projectCoordinator = coordinator
+    return view
   }
 }
