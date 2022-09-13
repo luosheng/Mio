@@ -15,7 +15,7 @@ struct MioApp: App {
         .environmentObject(Store.shared)
         .environmentObject(Preferences())
     }
-    .windowToolbarStyle(.unifiedCompact)
+    .windowToolbarStyle(.unified)
     
     Settings {
       SettingsView()
