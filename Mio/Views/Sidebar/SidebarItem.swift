@@ -14,10 +14,9 @@ struct SidebarItem: View {
     VStack {
       HStack {
         Text(project.name)
+          .foregroundColor(project.running ? .primary : .secondary)
+          .fontWeight(project.running ? .bold : .regular)
         Spacer()
-        Circle()
-          .frame(width: 8, height: 8)
-          .foregroundColor(project.running ? Color.green : Color.gray)
       }
     }
   }
