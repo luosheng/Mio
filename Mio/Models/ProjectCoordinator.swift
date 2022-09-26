@@ -47,14 +47,20 @@ class ProjectCoordinator: LocalProcessDelegate, XTermViewDelegate {
     guard !self.process.running else {
       return
     }
-    process.startProcess(
-      executable: executable,
-      args: args,
-      environment: Terminal.getEnvironmentVariables() + environment,
-      execName: execName
-    )
-    updateSize()
-    delegate?.didUpdateRunningState(true)
+    DispatchQueue.main.async {
+      Task {
+        await self.view.clear()
+      }
+      self.history = ""
+      self.process.startProcess(
+        executable: executable,
+        args: args,
+        environment: Terminal.getEnvironmentVariables() + environment,
+        execName: execName
+      )
+      self.updateSize()
+      self.delegate?.didUpdateRunningState(true)
+    }
   }
   
   public func terminate() {
