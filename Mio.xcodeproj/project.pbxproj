@@ -40,6 +40,8 @@
 		B3FFCC4B28E2DCE500BAED05 /* apple-original.svg in Resources */ = {isa = PBXBuildFile; fileRef = B3FFCC4A28E2DCE500BAED05 /* apple-original.svg */; };
 		B3FFCC4D28E2DD1C00BAED05 /* vuejs-original.svg in Resources */ = {isa = PBXBuildFile; fileRef = B3FFCC4C28E2DD1C00BAED05 /* vuejs-original.svg */; };
 		B3FFCC4F28E2DD7400BAED05 /* ssh-original.svg in Resources */ = {isa = PBXBuildFile; fileRef = B3FFCC4E28E2DD7400BAED05 /* ssh-original.svg */; };
+		B3FFCC5228E2E58300BAED05 /* LocalProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FFCC5128E2E58300BAED05 /* LocalProcess.swift */; };
+		B3FFCC5428E2E5C000BAED05 /* Pty.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FFCC5328E2E5C000BAED05 /* Pty.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +77,8 @@
 		B3FFCC4A28E2DCE500BAED05 /* apple-original.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "apple-original.svg"; sourceTree = "<group>"; };
 		B3FFCC4C28E2DD1C00BAED05 /* vuejs-original.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "vuejs-original.svg"; sourceTree = "<group>"; };
 		B3FFCC4E28E2DD7400BAED05 /* ssh-original.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ssh-original.svg"; sourceTree = "<group>"; };
+		B3FFCC5128E2E58300BAED05 /* LocalProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalProcess.swift; sourceTree = "<group>"; };
+		B3FFCC5328E2E5C000BAED05 /* Pty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pty.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +189,7 @@
 		B35BCCCF28B4ACA400F1779E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B3FFCC5028E2E55E00BAED05 /* External */,
 				B3BA457528B4AD81002F11C2 /* Mocks */,
 				B35BCCD028B4ACB200F1779E /* Project.swift */,
 				B3BA457828B4ADCB002F11C2 /* Store.swift */,
@@ -255,6 +260,15 @@
 				B3FFCC4228E2DBB100BAED05 /* react-original.svg */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		B3FFCC5028E2E55E00BAED05 /* External */ = {
+			isa = PBXGroup;
+			children = (
+				B3FFCC5128E2E58300BAED05 /* LocalProcess.swift */,
+				B3FFCC5328E2E5C000BAED05 /* Pty.swift */,
+			);
+			path = External;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,11 +368,13 @@
 				B30E473528B75D5500E8893E /* Preferences.swift in Sources */,
 				B33B298428B4A903009CD8D7 /* MioApp.swift in Sources */,
 				B30E472A28B744B100E8893E /* EnvironmentEditor.swift in Sources */,
+				B3FFCC5428E2E5C000BAED05 /* Pty.swift in Sources */,
 				B35BCCD128B4ACB200F1779E /* Project.swift in Sources */,
 				B3BA457F28B4B6C7002F11C2 /* SidebarItem.swift in Sources */,
 				B3380E7328CED30A00D60216 /* ProjectCoordinator.swift in Sources */,
 				B30E473928B84CC900E8893E /* SwiftTermColor+NSColor.swift in Sources */,
 				B3BA458828B4C12B002F11C2 /* TermView.swift in Sources */,
+				B3FFCC5228E2E58300BAED05 /* LocalProcess.swift in Sources */,
 				B3BA457D28B4AF38002F11C2 /* Sidebar.swift in Sources */,
 				B3BA458228B4B7ED002F11C2 /* ProjectView.swift in Sources */,
 				B30E472628B73C2500E8893E /* EnvironmentField.swift in Sources */,

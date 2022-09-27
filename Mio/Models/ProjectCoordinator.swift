@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SwiftTerm
 import XTerm
 
 protocol ProjectCoordinatorDelegate {
@@ -55,7 +54,7 @@ class ProjectCoordinator: LocalProcessDelegate, XTermViewDelegate {
       self.process.startProcess(
         executable: executable,
         args: args,
-        environment: Terminal.getEnvironmentVariables() + environment,
+        environment: environment,
         execName: execName
       )
       self.updateSize()
@@ -72,7 +71,7 @@ class ProjectCoordinator: LocalProcessDelegate, XTermViewDelegate {
   
   // MARK: - LocalProcessDelegate
   
-  func processTerminated(_ source: SwiftTerm.LocalProcess, exitCode: Int32?) {
+  func processTerminated(_ source: LocalProcess, exitCode: Int32?) {
     delegate?.didUpdateRunningState(false)
   }
   
