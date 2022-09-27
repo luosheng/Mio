@@ -10,7 +10,7 @@ import SwiftUI
 struct Sidebar: View {
   @EnvironmentObject var store: Store
   @State private var presentingAddProject = false
-  
+
   var body: some View {
     VStack {
       List {
@@ -28,7 +28,7 @@ struct Sidebar: View {
           store.moveProject(from: indexSet, to: index)
         }
       }
-      
+
       HStack {
         Button {
           presentingAddProject = true
@@ -38,9 +38,9 @@ struct Sidebar: View {
         .frame(width: 16, height: 16)
         .buttonStyle(.plain)
         .padding(8)
-        
+
         Spacer()
-        
+
         Button {
           store.selectedProject?.remove()
         } label: {

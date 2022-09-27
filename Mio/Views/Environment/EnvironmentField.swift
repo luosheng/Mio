@@ -10,14 +10,14 @@ import SwiftUI
 struct EnvironmentField: View {
   @Binding var environments: [ProjectEnv]
   @State var showEnvEditor = false
-  
+
   var body: some View {
     let text = Binding {
       ProjectEnv.toString(envs: self.environments)
     } set: { str in
       self.environments = ProjectEnv.parse(str: str)
     }
-    
+
     return VStack {
       HStack {
         TextField("Environments", text: text)

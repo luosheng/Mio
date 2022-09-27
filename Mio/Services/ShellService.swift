@@ -8,21 +8,20 @@
 import Foundation
 
 let PRE_COMMANDS = [
-  "/bin/zsh": "source ~/.zshrc"
+  "/bin/zsh": "source ~/.zshrc",
 ]
 
 struct ShellService {
-  
   static let DEFAULT_SHELL = "/bin/bash"
-  
+
   static let shared: ShellService = .init()
-  
+
   var shellPath: String!
-  
+
   init() {
-    shellPath = self.getShell()
+    shellPath = getShell()
   }
-  
+
   private func getShell() -> String {
     let bufsize = sysconf(_SC_GETPW_R_SIZE_MAX)
     guard bufsize != -1 else {
@@ -34,18 +33,17 @@ struct ShellService {
     }
     var pwd = passwd()
     var result: UnsafeMutablePointer<passwd>? = UnsafeMutablePointer<passwd>.allocate(capacity: 1)
-    
+
     if getpwuid_r(getuid(), &pwd, buffer, bufsize, &result) != 0 {
       return ShellService.DEFAULT_SHELL
     }
     return String(cString: pwd.pw_shell)
   }
-  
+
   func getPreCommand() -> String {
-    guard let command = PRE_COMMANDS[self.shellPath] else {
+    guard let command = PRE_COMMANDS[shellPath] else {
       return ""
     }
     return command
   }
-  
 }

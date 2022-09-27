@@ -15,14 +15,14 @@ struct SidebarItemContextMenuView: View {
         project.run()
       }
       .disabled(project.running)
-      
+
       Button("Stop") {
         project.stop()
       }
       .disabled(!project.running)
-      
+
       Divider()
-      
+
       Button("Remove") {
         project.remove()
       }

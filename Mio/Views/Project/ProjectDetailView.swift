@@ -12,7 +12,7 @@ struct ProjectDetailView: View {
   var editing: Bool = false
   @StateObject var project = Project(name: "", command: "")
   @EnvironmentObject var store: Store
-  
+
   var body: some View {
     VStack {
       Text(editing ? "Edit project" : "Add project")
@@ -29,26 +29,26 @@ struct ProjectDetailView: View {
         Toggle("Launch at start", isOn: $project.autoStarts)
           .toggleStyle(.switch)
         TextField("Icon", text: Binding(get: {
-          return project.icon ?? ""
+          project.icon ?? ""
         }, set: { val in
           project.icon = val
         }))
       }
       .padding()
-      
+
       Spacer()
       Divider()
-      
+
       HStack {
         Button("Cancel") {
           self.presented = false
         }
         .keyboardShortcut(.cancelAction)
-        
+
         Spacer()
-        
+
         Button("Save") {
-          if (!editing) {
+          if !editing {
             self.store.projects.append(project)
           }
           self.store.save()

@@ -12,9 +12,9 @@ enum Appearance: String, Codable, CaseIterable, Identifiable {
   case dark
   case light
   case system
-  
-  var id: String { self.rawValue }
-  
+
+  var id: String { rawValue }
+
   func toColorScheme() -> ColorScheme? {
     switch self {
     case .light:

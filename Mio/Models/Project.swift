@@ -5,11 +5,10 @@
 //  Created by Luo Sheng on 2022/8/23.
 //
 
-import Foundation
 import Combine
+import Foundation
 
 class Project: Codable, Hashable, Identifiable, ObservableObject, ProjectCoordinatorDelegate {
-  
   @Published var id: UUID
   @Published var name: String
   @Published var command: String
@@ -18,32 +17,30 @@ class Project: Codable, Hashable, Identifiable, ObservableObject, ProjectCoordin
   @Published var autoStarts: Bool
   @Published var icon: String?
   @Published var running: Bool = false
-  
+
   var coordinator: ProjectCoordinator!
-  
-  private enum CodingKeys : String, CodingKey {
+
+  private enum CodingKeys: String, CodingKey {
     case id, name, command, directory, environments, autoStarts, icon
   }
-  
+
   static func == (lhs: Project, rhs: Project) -> Bool {
     lhs.id == rhs.id
   }
-  
-  func hash(into hasher: inout Hasher) {
-    
-  }
-  
+
+  func hash(into _: inout Hasher) {}
+
   init(name: String, command: String, directory: String, environments: [ProjectEnv]) {
-    self.id = UUID()
+    id = UUID()
     self.name = name
     self.command = command
     self.directory = directory
     self.environments = environments
-    self.autoStarts = false
-    
+    autoStarts = false
+
     setup()
   }
-  
+
   convenience init(name: String, command: String) {
     self.init(
       name: name,
@@ -52,7 +49,7 @@ class Project: Codable, Hashable, Identifiable, ObservableObject, ProjectCoordin
       environments: []
     )
   }
-  
+
   func encode(to encoder: Encoder) throws {
     var container = encoder.container(keyedBy: CodingKeys.self)
     try container.encode(id, forKey: .id)
@@ -63,7 +60,7 @@ class Project: Codable, Hashable, Identifiable, ObservableObject, ProjectCoordin
     try container.encode(autoStarts, forKey: .autoStarts)
     try container.encode(icon, forKey: .icon)
   }
-  
+
   required init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     id = try container.decode(UUID.self, forKey: .id)
@@ -73,43 +70,43 @@ class Project: Codable, Hashable, Identifiable, ObservableObject, ProjectCoordin
     if let environments = try? container.decodeIfPresent([ProjectEnv].self, forKey: .environments) {
       self.environments = environments
     } else {
-      self.environments = []
+      environments = []
     }
     autoStarts = (try? container.decodeIfPresent(Bool.self, forKey: .autoStarts)) ?? false
     icon = try? container.decode(String?.self, forKey: .icon)
-    
+
     setup()
   }
-  
+
   private func setup() {
     coordinator = ProjectCoordinator()
     coordinator.delegate = self
   }
-  
+
   func run() {
     FileManager.default.changeCurrentDirectoryPath(directory)
-    self.coordinator.startProcess(
+    coordinator.startProcess(
       executable: ShellService.shared.shellPath,
       args: ["-l", "-i", "-c", "\(ShellService.shared.getPreCommand());\(command)"],
-      environment: self.environments.map { $0.toString() },
+      environment: environments.map { $0.toString() },
       execName: nil
     )
   }
-  
+
   func stop() {
-    self.coordinator.terminate()
+    coordinator.terminate()
   }
-  
+
   func remove() {
     guard let index = Store.shared.projects.firstIndex(where: { $0.id == self.id }) else {
       return
     }
-    self.stop()
+    stop()
     Store.shared.selectedProject = nil
     Store.shared.projects.remove(at: index)
     Store.shared.save()
   }
-  
+
   func clear() {
     DispatchQueue.main.async {
       Task {
@@ -117,14 +114,12 @@ class Project: Codable, Hashable, Identifiable, ObservableObject, ProjectCoordin
       }
     }
   }
-  
+
   // MARK: - ProjectCoordinatorDelegate
-  
+
   func didUpdateRunningState(_ running: Bool) {
     self.running = running
   }
-  
-  func didReceivedDataString(_ data: String) {
-    
-  }
+
+  func didReceivedDataString(_: String) {}
 }

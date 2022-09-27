@@ -10,7 +10,7 @@ import SwiftUI
 struct EnvironmentEditor: View {
   @Binding var presented: Bool
   @Binding var environments: [ProjectEnv]
-  
+
   var body: some View {
     VStack {
       Text("Edit environments")
@@ -50,15 +50,15 @@ struct EnvironmentEditor: View {
           TextEditor(text: binding)
         }
       }
-      
+
       HStack {
         Button("Cancel") {
           self.presented = false
         }
         .keyboardShortcut(.cancelAction)
-        
+
         Spacer()
-        
+
         Button("Save") {
           self.presented = false
         }

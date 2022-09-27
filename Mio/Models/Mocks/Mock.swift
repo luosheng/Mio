@@ -8,7 +8,7 @@
 import Foundation
 
 let mockProject = Project(name: "Print Env", command: "printenv", directory: "/", environments: [
-  ProjectEnv(name: "POP_TEST", value: "1")
+  ProjectEnv(name: "POP_TEST", value: "1"),
 ])
 
 let mockProjects = [

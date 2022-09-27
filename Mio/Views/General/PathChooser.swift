@@ -11,7 +11,7 @@ struct PathChooser: View {
   var titleKey: LocalizedStringKey
   @Binding var text: String
   var dialogConfig: ((NSOpenPanel) -> Void)?
-  
+
   var body: some View {
     HStack {
       TextField(titleKey, text: $text)
@@ -21,7 +21,7 @@ struct PathChooser: View {
         if let dialogConfig = dialogConfig {
           dialogConfig(dialog)
         }
-        if (dialog.runModal() == NSApplication.ModalResponse.OK) {
+        if dialog.runModal() == NSApplication.ModalResponse.OK {
           guard let url = dialog.url else {
             return
           }

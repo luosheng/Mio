@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SettingGeneralView: View {
   @EnvironmentObject var pref: Preferences
-  
+
   var body: some View {
     VStack {
       Form {

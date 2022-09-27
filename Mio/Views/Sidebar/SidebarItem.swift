@@ -5,16 +5,17 @@
 //  Created by Luo Sheng on 2022/8/23.
 //
 
-import SwiftUI
 import SVGView
+import SwiftUI
 
 struct SidebarItem: View {
   @ObservedObject var project: Project
-  
+
   var body: some View {
     HStack {
       if let icon = project.icon,
-         let iconUrl = Bundle.main.url(forResource: "\(icon)-original", withExtension: "svg") {
+         let iconUrl = Bundle.main.url(forResource: "\(icon)-original", withExtension: "svg")
+      {
         SVGView(contentsOf: iconUrl)
           .frame(width: 32, height: 32)
       } else {

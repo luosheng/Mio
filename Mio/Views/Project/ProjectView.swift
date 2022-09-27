@@ -12,7 +12,7 @@ struct ProjectView: View {
   @Environment(\.colorScheme) var colorScheme
   @StateObject var project: Project
   @State private var presentingProjectDetail: Bool = false
-  
+
   var body: some View {
     VStack {
       TermView()
@@ -41,7 +41,7 @@ struct ProjectView: View {
           Image(systemName: "square.and.pencil")
         }
         .keyboardShortcut(.init("I"), modifiers: .command)
-        
+
         Button {
           project.run()
         } label: {
@@ -49,7 +49,7 @@ struct ProjectView: View {
         }
         .keyboardShortcut(.init("R"), modifiers: .command)
         .disabled(project.running)
-        
+
         Button {
           project.stop()
         } label: {
