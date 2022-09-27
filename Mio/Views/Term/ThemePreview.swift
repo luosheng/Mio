@@ -16,21 +16,44 @@ struct ThemePreview: View {
   }
 
   var body: some View {
-    VStack {
-      HStack {
-        Rectangle()
-          .fill(Color(NSColor(hexString: theme.black!)))
-          .frame(width: 16, height: 16)
-        Rectangle()
-          .fill(Color(NSColor(hexString: theme.blue!)))
-          .frame(width: 16, height: 16)
+    ZStack {
+      VStack(alignment: .leading) {
+        HStack {
+          Text("Foreground")
+            .font(.title3)
+            .foregroundColor(Color(nsColor: NSColor(hexString: theme.foreground!)))
+          Spacer()
+        }
+        HStack {
+          ColorBlock(theme.black)
+          ColorBlock(theme.blue)
+          ColorBlock(theme.cyan)
+          ColorBlock(theme.green)
+          ColorBlock(theme.magenta)
+          ColorBlock(theme.red)
+          ColorBlock(theme.white)
+          ColorBlock(theme.yellow)
+        }
+        HStack {
+          ColorBlock(theme.brightBlack)
+          ColorBlock(theme.brightBlue)
+          ColorBlock(theme.brightCyan)
+          ColorBlock(theme.brightGreen)
+          ColorBlock(theme.brightMagenta)
+          ColorBlock(theme.brightRed)
+          ColorBlock(theme.brightWhite)
+          ColorBlock(theme.brightYellow)
+        }
       }
+      .frame(width: 180)
+      .padding()
     }
+    .background(Color(nsColor: NSColor(hexString: theme.background!)))
   }
 }
 
 struct ThemePreview_Previews: PreviewProvider {
   static var previews: some View {
-    ThemePreview(theme: Theme.defaultDark)
+    ThemePreview(theme: Theme.defaultLight)
   }
 }
