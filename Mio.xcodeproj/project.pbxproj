@@ -11,14 +11,12 @@
 		B30E470D28B5981600E8893E /* ProjectDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E470C28B5981600E8893E /* ProjectDetailView.swift */; };
 		B30E471028B59E3E00E8893E /* PathChooser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E470F28B59E3E00E8893E /* PathChooser.swift */; };
 		B30E471228B5D29800E8893E /* SidebarItemContextMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E471128B5D29800E8893E /* SidebarItemContextMenuView.swift */; };
-		B30E471E28B64DAE00E8893E /* SwiftTerm in Frameworks */ = {isa = PBXBuildFile; productRef = B30E471D28B64DAE00E8893E /* SwiftTerm */; };
 		B30E472628B73C2500E8893E /* EnvironmentField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E472528B73C2500E8893E /* EnvironmentField.swift */; };
 		B30E472828B73FFB00E8893E /* ProjectEnv.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E472728B73FFB00E8893E /* ProjectEnv.swift */; };
 		B30E472A28B744B100E8893E /* EnvironmentEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E472928B744B100E8893E /* EnvironmentEditor.swift */; };
 		B30E472F28B75A0800E8893E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E472E28B75A0800E8893E /* SettingsView.swift */; };
 		B30E473128B75A3600E8893E /* SettingGeneralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E473028B75A3600E8893E /* SettingGeneralView.swift */; };
 		B30E473528B75D5500E8893E /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E473428B75D5500E8893E /* Preferences.swift */; };
-		B30E473928B84CC900E8893E /* SwiftTermColor+NSColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E473828B84CC900E8893E /* SwiftTermColor+NSColor.swift */; };
 		B3380E7328CED30A00D60216 /* ProjectCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3380E7228CED30A00D60216 /* ProjectCoordinator.swift */; };
 		B33B298428B4A903009CD8D7 /* MioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B298328B4A903009CD8D7 /* MioApp.swift */; };
 		B33B298628B4A903009CD8D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B298528B4A903009CD8D7 /* ContentView.swift */; };
@@ -55,7 +53,6 @@
 		B30E472E28B75A0800E8893E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B30E473028B75A3600E8893E /* SettingGeneralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingGeneralView.swift; sourceTree = "<group>"; };
 		B30E473428B75D5500E8893E /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
-		B30E473828B84CC900E8893E /* SwiftTermColor+NSColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftTermColor+NSColor.swift"; sourceTree = "<group>"; };
 		B3380E7228CED30A00D60216 /* ProjectCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCoordinator.swift; sourceTree = "<group>"; };
 		B33B298028B4A903009CD8D7 /* Mio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B33B298328B4A903009CD8D7 /* MioApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MioApp.swift; sourceTree = "<group>"; };
@@ -87,7 +84,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3FFCC4028E2DB6A00BAED05 /* SVGView in Frameworks */,
-				B30E471E28B64DAE00E8893E /* SwiftTerm in Frameworks */,
 				B3462B3928C271A7004D6AFE /* XTerm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -132,7 +128,6 @@
 		B30E473728B84CB400E8893E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				B30E473828B84CC900E8893E /* SwiftTermColor+NSColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -288,7 +283,6 @@
 			);
 			name = Mio;
 			packageProductDependencies = (
-				B30E471D28B64DAE00E8893E /* SwiftTerm */,
 				B3462B3828C271A7004D6AFE /* XTerm */,
 				B3FFCC3F28E2DB6A00BAED05 /* SVGView */,
 			);
@@ -321,7 +315,6 @@
 			);
 			mainGroup = B33B297728B4A903009CD8D7;
 			packageReferences = (
-				B30E471C28B64DAE00E8893E /* XCRemoteSwiftPackageReference "SwiftTerm" */,
 				B3462B3728C271A7004D6AFE /* XCRemoteSwiftPackageReference "XTermSwift" */,
 				B3FFCC3E28E2DB6A00BAED05 /* XCRemoteSwiftPackageReference "SVGView" */,
 			);
@@ -372,7 +365,6 @@
 				B35BCCD128B4ACB200F1779E /* Project.swift in Sources */,
 				B3BA457F28B4B6C7002F11C2 /* SidebarItem.swift in Sources */,
 				B3380E7328CED30A00D60216 /* ProjectCoordinator.swift in Sources */,
-				B30E473928B84CC900E8893E /* SwiftTermColor+NSColor.swift in Sources */,
 				B3BA458828B4C12B002F11C2 /* TermView.swift in Sources */,
 				B3FFCC5228E2E58300BAED05 /* LocalProcess.swift in Sources */,
 				B3BA457D28B4AF38002F11C2 /* Sidebar.swift in Sources */,
@@ -578,14 +570,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		B30E471C28B64DAE00E8893E /* XCRemoteSwiftPackageReference "SwiftTerm" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/migueldeicaza/SwiftTerm.git";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		B3462B3728C271A7004D6AFE /* XCRemoteSwiftPackageReference "XTermSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/luosheng/XTermSwift.git";
@@ -605,11 +589,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		B30E471D28B64DAE00E8893E /* SwiftTerm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = B30E471C28B64DAE00E8893E /* XCRemoteSwiftPackageReference "SwiftTerm" */;
-			productName = SwiftTerm;
-		};
 		B3462B3828C271A7004D6AFE /* XTerm */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B3462B3728C271A7004D6AFE /* XCRemoteSwiftPackageReference "XTermSwift" */;

@@ -7,7 +7,6 @@
 
 import Foundation
 import Combine
-import SwiftTerm
 
 class Project: Codable, Hashable, Identifiable, ObservableObject, ProjectCoordinatorDelegate {
   
