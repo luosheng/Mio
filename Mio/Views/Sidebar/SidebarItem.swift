@@ -11,12 +11,23 @@ struct SidebarItem: View {
   @ObservedObject var project: Project
   
   var body: some View {
-    VStack {
-      HStack {
-        Text(project.name)
-          .foregroundColor(project.running ? .primary : .secondary)
-          .fontWeight(project.running ? .bold : .regular)
-        Spacer()
+    HStack {
+      Image("react-original")
+        .resizable()
+        .frame(width: 32, height: 32)
+      VStack {
+        HStack {
+          Text(project.name)
+            .font(.headline)
+            .fontWeight(.semibold)
+          Spacer()
+        }
+        HStack {
+          Text(project.command)
+            .foregroundColor(project.running ? .green : .secondary)
+            .font(.caption)
+          Spacer()
+        }
       }
     }
   }
