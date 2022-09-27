@@ -40,6 +40,7 @@
 		B3FFCC4F28E2DD7400BAED05 /* ssh-original.svg in Resources */ = {isa = PBXBuildFile; fileRef = B3FFCC4E28E2DD7400BAED05 /* ssh-original.svg */; };
 		B3FFCC5228E2E58300BAED05 /* LocalProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FFCC5128E2E58300BAED05 /* LocalProcess.swift */; };
 		B3FFCC5428E2E5C000BAED05 /* Pty.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FFCC5328E2E5C000BAED05 /* Pty.swift */; };
+		B3FFCC5628E2EE9900BAED05 /* Color+HexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FFCC5528E2EE9900BAED05 /* Color+HexString.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +77,7 @@
 		B3FFCC4E28E2DD7400BAED05 /* ssh-original.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ssh-original.svg"; sourceTree = "<group>"; };
 		B3FFCC5128E2E58300BAED05 /* LocalProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalProcess.swift; sourceTree = "<group>"; };
 		B3FFCC5328E2E5C000BAED05 /* Pty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pty.swift; sourceTree = "<group>"; };
+		B3FFCC5528E2EE9900BAED05 /* Color+HexString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+HexString.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 		B30E473728B84CB400E8893E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				B3FFCC5528E2EE9900BAED05 /* Color+HexString.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				B3BA458228B4B7ED002F11C2 /* ProjectView.swift in Sources */,
 				B30E472628B73C2500E8893E /* EnvironmentField.swift in Sources */,
 				B3BA457728B4AD8D002F11C2 /* Mock.swift in Sources */,
+				B3FFCC5628E2EE9900BAED05 /* Color+HexString.swift in Sources */,
 				B30E472828B73FFB00E8893E /* ProjectEnv.swift in Sources */,
 				B30E472F28B75A0800E8893E /* SettingsView.swift in Sources */,
 			);
