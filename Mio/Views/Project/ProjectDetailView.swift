@@ -12,7 +12,7 @@ struct ProjectDetailView: View {
   var editing: Bool = false
   @StateObject var project = Project(name: "", command: "")
   @EnvironmentObject var store: Store
-
+  
   var body: some View {
     VStack {
       Text(editing ? "Edit project" : "Add project")
@@ -28,6 +28,11 @@ struct ProjectDetailView: View {
         EnvironmentField(environments: $project.environments)
         Toggle("Launch at start", isOn: $project.autoStarts)
           .toggleStyle(.switch)
+        TextField("Icon", text: Binding(get: {
+          return project.icon ?? ""
+        }, set: { val in
+          project.icon = val
+        }))
       }
       .padding()
       

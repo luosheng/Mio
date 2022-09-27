@@ -17,12 +17,13 @@ class Project: Codable, Hashable, Identifiable, ObservableObject, ProjectCoordin
   @Published var directory: String
   @Published var environments: [ProjectEnv]
   @Published var autoStarts: Bool
+  @Published var icon: String?
   @Published var running: Bool = false
   
   var coordinator: ProjectCoordinator!
   
   private enum CodingKeys : String, CodingKey {
-    case id, name, command, directory, environments, autoStarts
+    case id, name, command, directory, environments, autoStarts, icon
   }
   
   static func == (lhs: Project, rhs: Project) -> Bool {
@@ -61,6 +62,7 @@ class Project: Codable, Hashable, Identifiable, ObservableObject, ProjectCoordin
     try container.encode(directory, forKey: .directory)
     try container.encode(environments, forKey: .environments)
     try container.encode(autoStarts, forKey: .autoStarts)
+    try container.encode(icon, forKey: .icon)
   }
   
   required init(from decoder: Decoder) throws {
@@ -75,6 +77,7 @@ class Project: Codable, Hashable, Identifiable, ObservableObject, ProjectCoordin
       self.environments = []
     }
     autoStarts = (try? container.decodeIfPresent(Bool.self, forKey: .autoStarts)) ?? false
+    icon = try? container.decode(String?.self, forKey: .icon)
     
     setup()
   }
