@@ -16,7 +16,11 @@ struct ColorBlock: View {
   var body: some View {
     Rectangle()
       .fill(Color(color))
-      .frame(width: 16, height: 16)
+      .frame(width: 12, height: 12)
+      .overlay {
+        Rectangle()
+          .strokeBorder(.white, lineWidth: 1)
+      }
   }
 }
 

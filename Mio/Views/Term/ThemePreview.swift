@@ -45,7 +45,7 @@ struct ThemePreview: View {
           ColorBlock(theme.brightYellow)
         }
       }
-      .frame(width: 180)
+      .frame(width: 150)
       .padding()
     }
     .background(Color(nsColor: NSColor(hexString: theme.background!)))
@@ -54,6 +54,6 @@ struct ThemePreview: View {
 
 struct ThemePreview_Previews: PreviewProvider {
   static var previews: some View {
-    ThemePreview(theme: Theme.defaultLight)
+    ThemePreview(theme: Theme.defaultDark)
   }
 }
