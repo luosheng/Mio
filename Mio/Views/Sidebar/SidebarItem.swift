@@ -6,14 +6,14 @@
 //
 
 import SwiftUI
+import SVGView
 
 struct SidebarItem: View {
   @ObservedObject var project: Project
   
   var body: some View {
     HStack {
-      Image("react-original")
-        .resizable()
+      SVGView(contentsOf: Bundle.main.url(forResource: "nodejs-original", withExtension: "svg")!)
         .frame(width: 32, height: 32)
       VStack {
         HStack {

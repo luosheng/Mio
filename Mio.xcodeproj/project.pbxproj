@@ -33,6 +33,13 @@
 		B3BA458228B4B7ED002F11C2 /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BA458128B4B7ED002F11C2 /* ProjectView.swift */; };
 		B3BA458828B4C12B002F11C2 /* TermView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BA458728B4C12B002F11C2 /* TermView.swift */; };
 		B3FFCC4028E2DB6A00BAED05 /* SVGView in Frameworks */ = {isa = PBXBuildFile; productRef = B3FFCC3F28E2DB6A00BAED05 /* SVGView */; };
+		B3FFCC4328E2DBB200BAED05 /* react-original.svg in Resources */ = {isa = PBXBuildFile; fileRef = B3FFCC4228E2DBB100BAED05 /* react-original.svg */; };
+		B3FFCC4528E2DC7700BAED05 /* nodejs-original.svg in Resources */ = {isa = PBXBuildFile; fileRef = B3FFCC4428E2DC7700BAED05 /* nodejs-original.svg */; };
+		B3FFCC4728E2DCC300BAED05 /* android-original.svg in Resources */ = {isa = PBXBuildFile; fileRef = B3FFCC4628E2DCC300BAED05 /* android-original.svg */; };
+		B3FFCC4928E2DCD800BAED05 /* bash-original.svg in Resources */ = {isa = PBXBuildFile; fileRef = B3FFCC4828E2DCD800BAED05 /* bash-original.svg */; };
+		B3FFCC4B28E2DCE500BAED05 /* apple-original.svg in Resources */ = {isa = PBXBuildFile; fileRef = B3FFCC4A28E2DCE500BAED05 /* apple-original.svg */; };
+		B3FFCC4D28E2DD1C00BAED05 /* vuejs-original.svg in Resources */ = {isa = PBXBuildFile; fileRef = B3FFCC4C28E2DD1C00BAED05 /* vuejs-original.svg */; };
+		B3FFCC4F28E2DD7400BAED05 /* ssh-original.svg in Resources */ = {isa = PBXBuildFile; fileRef = B3FFCC4E28E2DD7400BAED05 /* ssh-original.svg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +68,13 @@
 		B3BA457E28B4B6C7002F11C2 /* SidebarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItem.swift; sourceTree = "<group>"; };
 		B3BA458128B4B7ED002F11C2 /* ProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
 		B3BA458728B4C12B002F11C2 /* TermView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermView.swift; sourceTree = "<group>"; };
+		B3FFCC4228E2DBB100BAED05 /* react-original.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "react-original.svg"; sourceTree = "<group>"; };
+		B3FFCC4428E2DC7700BAED05 /* nodejs-original.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "nodejs-original.svg"; sourceTree = "<group>"; };
+		B3FFCC4628E2DCC300BAED05 /* android-original.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "android-original.svg"; sourceTree = "<group>"; };
+		B3FFCC4828E2DCD800BAED05 /* bash-original.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "bash-original.svg"; sourceTree = "<group>"; };
+		B3FFCC4A28E2DCE500BAED05 /* apple-original.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "apple-original.svg"; sourceTree = "<group>"; };
+		B3FFCC4C28E2DD1C00BAED05 /* vuejs-original.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "vuejs-original.svg"; sourceTree = "<group>"; };
+		B3FFCC4E28E2DD7400BAED05 /* ssh-original.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ssh-original.svg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +157,7 @@
 				B3BA457A28B4AF1F002F11C2 /* Views */,
 				B35BCCCF28B4ACA400F1779E /* Models */,
 				B30E473728B84CB400E8893E /* Extensions */,
+				B3FFCC4128E2DB9B00BAED05 /* Resources */,
 				B33B298328B4A903009CD8D7 /* MioApp.swift */,
 				B33B298528B4A903009CD8D7 /* ContentView.swift */,
 				B33B298728B4A906009CD8D7 /* Assets.xcassets */,
@@ -228,6 +243,20 @@
 			path = Term;
 			sourceTree = "<group>";
 		};
+		B3FFCC4128E2DB9B00BAED05 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B3FFCC4E28E2DD7400BAED05 /* ssh-original.svg */,
+				B3FFCC4C28E2DD1C00BAED05 /* vuejs-original.svg */,
+				B3FFCC4A28E2DCE500BAED05 /* apple-original.svg */,
+				B3FFCC4828E2DCD800BAED05 /* bash-original.svg */,
+				B3FFCC4628E2DCC300BAED05 /* android-original.svg */,
+				B3FFCC4428E2DC7700BAED05 /* nodejs-original.svg */,
+				B3FFCC4228E2DBB100BAED05 /* react-original.svg */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -296,8 +325,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3FFCC4328E2DBB200BAED05 /* react-original.svg in Resources */,
+				B3FFCC4B28E2DCE500BAED05 /* apple-original.svg in Resources */,
 				B33B298B28B4A906009CD8D7 /* Preview Assets.xcassets in Resources */,
+				B3FFCC4528E2DC7700BAED05 /* nodejs-original.svg in Resources */,
+				B3FFCC4928E2DCD800BAED05 /* bash-original.svg in Resources */,
+				B3FFCC4728E2DCC300BAED05 /* android-original.svg in Resources */,
 				B33B298828B4A906009CD8D7 /* Assets.xcassets in Resources */,
+				B3FFCC4F28E2DD7400BAED05 /* ssh-original.svg in Resources */,
+				B3FFCC4D28E2DD1C00BAED05 /* vuejs-original.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
