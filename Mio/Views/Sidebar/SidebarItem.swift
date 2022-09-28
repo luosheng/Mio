@@ -13,15 +13,8 @@ struct SidebarItem: View {
 
   var body: some View {
     HStack {
-      if let icon = project.icon,
-         let iconUrl = Bundle.main.url(forResource: "\(icon)-original", withExtension: "svg")
-      {
-        SVGView(contentsOf: iconUrl)
-          .frame(width: 32, height: 32)
-      } else {
-        SVGView(contentsOf: Bundle.main.url(forResource: "bash-original", withExtension: "svg")!)
-          .frame(width: 32, height: 32)
-      }
+      loadIcon(project.icon, inactive: !project.running)
+        .frame(width: 24, height: 24)
       VStack {
         HStack {
           Text(project.name)

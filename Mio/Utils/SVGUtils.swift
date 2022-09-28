@@ -6,6 +6,9 @@
 //
 
 import Foundation
+import SVGView
+
+let DefaultIcon = "bash"
 
 func loadSvgString(_ type: String) -> String? {
   guard let url = Bundle.main.url(forResource: "\(type)-original", withExtension: "svg"),
@@ -19,4 +22,19 @@ func loadSvgString(_ type: String) -> String? {
 
 func transformSvgToInactive(_ svg: String, hexColor: String = "#B0B0B0") -> String {
   return svg.replacingOccurrences(of: ##"fill="#\w+""##, with: "fill=\"\(hexColor)\"", options: .regularExpression)
+}
+
+func loadIcon(_ icon: String?, inactive: Bool) -> SVGView {
+  var destSvg: String
+  if let icon = icon,
+     let svg = loadSvgString(icon)
+  {
+    destSvg = svg
+  } else {
+    destSvg = loadSvgString(DefaultIcon)!
+  }
+  if inactive {
+    destSvg = transformSvgToInactive(destSvg)
+  }
+  return SVGView(string: destSvg)
 }
