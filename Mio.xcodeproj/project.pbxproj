@@ -43,6 +43,7 @@
 		B3FFCC5628E2EE9900BAED05 /* Color+HexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FFCC5528E2EE9900BAED05 /* Color+HexString.swift */; };
 		B3FFCC5A28E2EF4600BAED05 /* ThemePreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FFCC5928E2EF4600BAED05 /* ThemePreview.swift */; };
 		B3FFCC5C28E2F13900BAED05 /* ColorBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FFCC5B28E2F13900BAED05 /* ColorBlock.swift */; };
+		B3FFCC6028E42E8200BAED05 /* SVGUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FFCC5F28E42E8200BAED05 /* SVGUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 		B3FFCC5528E2EE9900BAED05 /* Color+HexString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+HexString.swift"; sourceTree = "<group>"; };
 		B3FFCC5928E2EF4600BAED05 /* ThemePreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePreview.swift; sourceTree = "<group>"; };
 		B3FFCC5B28E2F13900BAED05 /* ColorBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorBlock.swift; sourceTree = "<group>"; };
+		B3FFCC5F28E42E8200BAED05 /* SVGUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SVGUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 		B33B298228B4A903009CD8D7 /* Mio */ = {
 			isa = PBXGroup;
 			children = (
+				B3A405DE28E4453D000063AA /* Utils */,
 				B30E46FE28B4FC0700E8893E /* Services */,
 				B3BA457A28B4AF1F002F11C2 /* Views */,
 				B35BCCCF28B4ACA400F1779E /* Models */,
@@ -200,6 +203,14 @@
 				B3380E7228CED30A00D60216 /* ProjectCoordinator.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		B3A405DE28E4453D000063AA /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B3FFCC5F28E42E8200BAED05 /* SVGUtils.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		B3BA457528B4AD81002F11C2 /* Mocks */ = {
@@ -368,6 +379,7 @@
 				B30E471028B59E3E00E8893E /* PathChooser.swift in Sources */,
 				B3FFCC5C28E2F13900BAED05 /* ColorBlock.swift in Sources */,
 				B30E470028B4FC1300E8893E /* ShellService.swift in Sources */,
+				B3FFCC6028E42E8200BAED05 /* SVGUtils.swift in Sources */,
 				B30E473528B75D5500E8893E /* Preferences.swift in Sources */,
 				B33B298428B4A903009CD8D7 /* MioApp.swift in Sources */,
 				B30E472A28B744B100E8893E /* EnvironmentEditor.swift in Sources */,
