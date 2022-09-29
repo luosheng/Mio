@@ -13,17 +13,12 @@ struct SidebarItem: View {
 
   var body: some View {
     HStack {
-      loadIcon(project.icon, inactive: !project.running)
-        .frame(width: 24, height: 24)
-      VStack {
-        HStack {
-          Text(project.name)
-            .font(.headline)
-            .fontWeight(.semibold)
-            .foregroundColor(project.running ? .primary : Color("InactiveText"))
-          Spacer()
-        }
-      }
+      SidebarIcon(project: project)
+      Text(project.name)
+        .font(.headline)
+        .fontWeight(.semibold)
+        .foregroundColor(project.running ? .primary : Color("InactiveText"))
+      Spacer()
     }
   }
 }

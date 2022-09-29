@@ -17,6 +17,7 @@
 		B30E472F28B75A0800E8893E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E472E28B75A0800E8893E /* SettingsView.swift */; };
 		B30E473128B75A3600E8893E /* SettingGeneralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E473028B75A3600E8893E /* SettingGeneralView.swift */; };
 		B30E473528B75D5500E8893E /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E473428B75D5500E8893E /* Preferences.swift */; };
+		B32705C228E5275E0059BD10 /* SidebarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32705C128E5275E0059BD10 /* SidebarIcon.swift */; };
 		B3380E7328CED30A00D60216 /* ProjectCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3380E7228CED30A00D60216 /* ProjectCoordinator.swift */; };
 		B33B298428B4A903009CD8D7 /* MioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B298328B4A903009CD8D7 /* MioApp.swift */; };
 		B33B298628B4A903009CD8D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B298528B4A903009CD8D7 /* ContentView.swift */; };
@@ -57,6 +58,7 @@
 		B30E472E28B75A0800E8893E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B30E473028B75A3600E8893E /* SettingGeneralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingGeneralView.swift; sourceTree = "<group>"; };
 		B30E473428B75D5500E8893E /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		B32705C128E5275E0059BD10 /* SidebarIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarIcon.swift; sourceTree = "<group>"; };
 		B3380E7228CED30A00D60216 /* ProjectCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCoordinator.swift; sourceTree = "<group>"; };
 		B33B298028B4A903009CD8D7 /* Mio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B33B298328B4A903009CD8D7 /* MioApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MioApp.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				B3BA457C28B4AF38002F11C2 /* Sidebar.swift */,
 				B3BA457E28B4B6C7002F11C2 /* SidebarItem.swift */,
 				B30E471128B5D29800E8893E /* SidebarItemContextMenuView.swift */,
+				B32705C128E5275E0059BD10 /* SidebarIcon.swift */,
 			);
 			path = Sidebar;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 				B3BA457D28B4AF38002F11C2 /* Sidebar.swift in Sources */,
 				B3BA458228B4B7ED002F11C2 /* ProjectView.swift in Sources */,
 				B3FFCC5A28E2EF4600BAED05 /* ThemePreview.swift in Sources */,
+				B32705C228E5275E0059BD10 /* SidebarIcon.swift in Sources */,
 				B30E472628B73C2500E8893E /* EnvironmentField.swift in Sources */,
 				B3BA457728B4AD8D002F11C2 /* Mock.swift in Sources */,
 				B3FFCC5628E2EE9900BAED05 /* Color+HexString.swift in Sources */,
