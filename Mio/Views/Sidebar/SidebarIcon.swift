@@ -12,7 +12,7 @@ struct SidebarIcon: View {
   var body: some View {
     ZStack {
       RoundedRectangle(cornerRadius: 8)
-        .fill(LinearGradient(colors: project.running ? getColor(project.name.hashValue) : [Color("InactiveText")], startPoint: .top, endPoint: .bottom))
+        .fill(LinearGradient(colors: project.running ? getRandomIconBackgroundColor() : [Color("InactiveText")], startPoint: .topLeading, endPoint: .bottomTrailing))
         .frame(width: 32, height: 32)
       loadIcon(project.icon, hexColor: project.running ? "#FFFFFF" : "#858585")
         .frame(width: 24, height: 24)
