@@ -20,12 +20,7 @@ struct SidebarItem: View {
           Text(project.name)
             .font(.headline)
             .fontWeight(.semibold)
-          Spacer()
-        }
-        HStack {
-          Text(project.command)
-            .foregroundColor(project.running ? .green : .secondary)
-            .font(.caption)
+            .foregroundColor(project.running ? .primary : Color("InactiveText"))
           Spacer()
         }
       }
