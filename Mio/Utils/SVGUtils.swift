@@ -24,7 +24,7 @@ func transformSvgToInactive(_ svg: String, hexColor: String = "#B0B0B0") -> Stri
   return svg.replacingOccurrences(of: ##"fill="#\w+""##, with: "fill=\"\(hexColor)\"", options: .regularExpression)
 }
 
-func loadIcon(_ icon: String?, inactive: Bool) -> SVGView {
+func loadIcon(_ icon: String?, hexColor: String?) -> SVGView {
   var destSvg: String
   if let icon = icon,
      let svg = loadSvgString(icon)
@@ -33,8 +33,8 @@ func loadIcon(_ icon: String?, inactive: Bool) -> SVGView {
   } else {
     destSvg = loadSvgString(DefaultIcon)!
   }
-  if inactive {
-    destSvg = transformSvgToInactive(destSvg)
+  if let hexColor = hexColor {
+    destSvg = transformSvgToInactive(destSvg, hexColor: hexColor)
   }
   return SVGView(string: destSvg)
 }
