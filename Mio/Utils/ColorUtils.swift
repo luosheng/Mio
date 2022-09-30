@@ -26,8 +26,8 @@ let randomColors = pantonColors.shuffled()
 
 var index = 0
 
-func getRandomIconBackgroundColor() -> [Color] {
+func getRandomIconBackgroundColor() -> Color {
   let result = Color(nsColor: NSColor(hexString: randomColors[index]))
   index = (index + 1) % randomColors.count
-  return [result]
+  return result
 }
