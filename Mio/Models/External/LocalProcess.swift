@@ -225,7 +225,7 @@
     }
 
     public func terminate() {
-      kill(shellPid, SIGTERM)
+      kill(shellPid, SIGKILL)
     }
 
     var loggingDir: String?
