@@ -14,7 +14,7 @@ struct ProjectView: View {
   @State private var presentingProjectDetail: Bool = false
 
   var body: some View {
-    VStack {
+    VStack(spacing: 0) {
       TermView()
         .theme(colorScheme == .light ? Theme.defaultLight : Theme.defaultDark)
         .coordinate(project.coordinator)
