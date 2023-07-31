@@ -19,12 +19,12 @@
 		B30E473528B75D5500E8893E /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30E473428B75D5500E8893E /* Preferences.swift */; };
 		B32705C228E5275E0059BD10 /* SidebarIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32705C128E5275E0059BD10 /* SidebarIcon.swift */; };
 		B32705C428E5306E0059BD10 /* ColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32705C328E5306E0059BD10 /* ColorUtils.swift */; };
+		B32705C828EE7F830059BD10 /* XTerm in Frameworks */ = {isa = PBXBuildFile; productRef = B32705C728EE7F830059BD10 /* XTerm */; };
 		B3380E7328CED30A00D60216 /* ProjectCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3380E7228CED30A00D60216 /* ProjectCoordinator.swift */; };
 		B33B298428B4A903009CD8D7 /* MioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B298328B4A903009CD8D7 /* MioApp.swift */; };
 		B33B298628B4A903009CD8D7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B298528B4A903009CD8D7 /* ContentView.swift */; };
 		B33B298828B4A906009CD8D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B33B298728B4A906009CD8D7 /* Assets.xcassets */; };
 		B33B298B28B4A906009CD8D7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B33B298A28B4A906009CD8D7 /* Preview Assets.xcassets */; };
-		B3462B3928C271A7004D6AFE /* XTerm in Frameworks */ = {isa = PBXBuildFile; productRef = B3462B3828C271A7004D6AFE /* XTerm */; };
 		B35BCCD128B4ACB200F1779E /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35BCCD028B4ACB200F1779E /* Project.swift */; };
 		B3BA457728B4AD8D002F11C2 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BA457628B4AD8D002F11C2 /* Mock.swift */; };
 		B3BA457928B4ADCB002F11C2 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BA457828B4ADCB002F11C2 /* Store.swift */; };
@@ -61,6 +61,7 @@
 		B30E473428B75D5500E8893E /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		B32705C128E5275E0059BD10 /* SidebarIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarIcon.swift; sourceTree = "<group>"; };
 		B32705C328E5306E0059BD10 /* ColorUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorUtils.swift; sourceTree = "<group>"; };
+		B32705C628EE7F760059BD10 /* XTerm */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = XTerm; path = ../XTerm; sourceTree = "<group>"; };
 		B3380E7228CED30A00D60216 /* ProjectCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectCoordinator.swift; sourceTree = "<group>"; };
 		B33B298028B4A903009CD8D7 /* Mio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B33B298328B4A903009CD8D7 /* MioApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MioApp.swift; sourceTree = "<group>"; };
@@ -96,7 +97,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3FFCC4028E2DB6A00BAED05 /* SVGView in Frameworks */,
-				B3462B3928C271A7004D6AFE /* XTerm in Frameworks */,
+				B32705C828EE7F830059BD10 /* XTerm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,9 +146,18 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		B32705C528EE7F760059BD10 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				B32705C628EE7F760059BD10 /* XTerm */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
 		B33B297728B4A903009CD8D7 = {
 			isa = PBXGroup;
 			children = (
+				B32705C528EE7F760059BD10 /* Packages */,
 				B33B298228B4A903009CD8D7 /* Mio */,
 				B33B298128B4A903009CD8D7 /* Products */,
 				B3462B3428C26691004D6AFE /* Frameworks */,
@@ -309,8 +319,8 @@
 			);
 			name = Mio;
 			packageProductDependencies = (
-				B3462B3828C271A7004D6AFE /* XTerm */,
 				B3FFCC3F28E2DB6A00BAED05 /* SVGView */,
+				B32705C728EE7F830059BD10 /* XTerm */,
 			);
 			productName = Mio;
 			productReference = B33B298028B4A903009CD8D7 /* Mio.app */;
@@ -341,7 +351,6 @@
 			);
 			mainGroup = B33B297728B4A903009CD8D7;
 			packageReferences = (
-				B3462B3728C271A7004D6AFE /* XCRemoteSwiftPackageReference "XTermSwift" */,
 				B3FFCC3E28E2DB6A00BAED05 /* XCRemoteSwiftPackageReference "SVGView" */,
 			);
 			productRefGroup = B33B298128B4A903009CD8D7 /* Products */;
@@ -544,6 +553,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pop-tap.Mio";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -570,6 +580,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.pop-tap.Mio";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -602,14 +613,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		B3462B3728C271A7004D6AFE /* XCRemoteSwiftPackageReference "XTermSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/luosheng/XTermSwift.git";
-			requirement = {
-				kind = revision;
-				revision = 5d78dfc56365ba45a752166337162287c54ccd7f;
-			};
-		};
 		B3FFCC3E28E2DB6A00BAED05 /* XCRemoteSwiftPackageReference "SVGView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/exyte/SVGView.git";
@@ -621,9 +624,8 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		B3462B3828C271A7004D6AFE /* XTerm */ = {
+		B32705C728EE7F830059BD10 /* XTerm */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B3462B3728C271A7004D6AFE /* XCRemoteSwiftPackageReference "XTermSwift" */;
 			productName = XTerm;
 		};
 		B3FFCC3F28E2DB6A00BAED05 /* SVGView */ = {
