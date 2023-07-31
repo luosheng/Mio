@@ -59,7 +59,7 @@ struct ProjectDetailView: View {
       }
       .padding()
     }
-    .frame(width: 600, height: 350, alignment: .topLeading)
+    .frame(width: 600, alignment: .topLeading)
   }
 }
 
