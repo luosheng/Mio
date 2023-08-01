@@ -26,6 +26,12 @@
 		B33B298828B4A906009CD8D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B33B298728B4A906009CD8D7 /* Assets.xcassets */; };
 		B33B298B28B4A906009CD8D7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B33B298A28B4A906009CD8D7 /* Preview Assets.xcassets */; };
 		B35BCCD128B4ACB200F1779E /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35BCCD028B4ACB200F1779E /* Project.swift */; };
+		B39FF8E12A78EEAE008199D1 /* nodedotjs.svg in Resources */ = {isa = PBXBuildFile; fileRef = B39FF8E02A78EEAE008199D1 /* nodedotjs.svg */; };
+		B39FF8E32A78EEE4008199D1 /* android.svg in Resources */ = {isa = PBXBuildFile; fileRef = B39FF8E22A78EEE4008199D1 /* android.svg */; };
+		B39FF8E52A78EEF0008199D1 /* vuedotjs.svg in Resources */ = {isa = PBXBuildFile; fileRef = B39FF8E42A78EEF0008199D1 /* vuedotjs.svg */; };
+		B39FF8E72A78EF00008199D1 /* apple.svg in Resources */ = {isa = PBXBuildFile; fileRef = B39FF8E62A78EF00008199D1 /* apple.svg */; };
+		B39FF8E92A78EF12008199D1 /* react.svg in Resources */ = {isa = PBXBuildFile; fileRef = B39FF8E82A78EF12008199D1 /* react.svg */; };
+		B39FF8EB2A78EF42008199D1 /* gnubash.svg in Resources */ = {isa = PBXBuildFile; fileRef = B39FF8EA2A78EF42008199D1 /* gnubash.svg */; };
 		B3BA457728B4AD8D002F11C2 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BA457628B4AD8D002F11C2 /* Mock.swift */; };
 		B3BA457928B4ADCB002F11C2 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BA457828B4ADCB002F11C2 /* Store.swift */; };
 		B3BA457D28B4AF38002F11C2 /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BA457C28B4AF38002F11C2 /* Sidebar.swift */; };
@@ -33,13 +39,6 @@
 		B3BA458228B4B7ED002F11C2 /* ProjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BA458128B4B7ED002F11C2 /* ProjectView.swift */; };
 		B3BA458828B4C12B002F11C2 /* TermView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3BA458728B4C12B002F11C2 /* TermView.swift */; };
 		B3FFCC4028E2DB6A00BAED05 /* SVGView in Frameworks */ = {isa = PBXBuildFile; productRef = B3FFCC3F28E2DB6A00BAED05 /* SVGView */; };
-		B3FFCC4328E2DBB200BAED05 /* react-original.svg in Resources */ = {isa = PBXBuildFile; fileRef = B3FFCC4228E2DBB100BAED05 /* react-original.svg */; };
-		B3FFCC4528E2DC7700BAED05 /* nodejs-original.svg in Resources */ = {isa = PBXBuildFile; fileRef = B3FFCC4428E2DC7700BAED05 /* nodejs-original.svg */; };
-		B3FFCC4728E2DCC300BAED05 /* android-original.svg in Resources */ = {isa = PBXBuildFile; fileRef = B3FFCC4628E2DCC300BAED05 /* android-original.svg */; };
-		B3FFCC4928E2DCD800BAED05 /* bash-original.svg in Resources */ = {isa = PBXBuildFile; fileRef = B3FFCC4828E2DCD800BAED05 /* bash-original.svg */; };
-		B3FFCC4B28E2DCE500BAED05 /* apple-original.svg in Resources */ = {isa = PBXBuildFile; fileRef = B3FFCC4A28E2DCE500BAED05 /* apple-original.svg */; };
-		B3FFCC4D28E2DD1C00BAED05 /* vuejs-original.svg in Resources */ = {isa = PBXBuildFile; fileRef = B3FFCC4C28E2DD1C00BAED05 /* vuejs-original.svg */; };
-		B3FFCC4F28E2DD7400BAED05 /* ssh-original.svg in Resources */ = {isa = PBXBuildFile; fileRef = B3FFCC4E28E2DD7400BAED05 /* ssh-original.svg */; };
 		B3FFCC5228E2E58300BAED05 /* LocalProcess.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FFCC5128E2E58300BAED05 /* LocalProcess.swift */; };
 		B3FFCC5428E2E5C000BAED05 /* Pty.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FFCC5328E2E5C000BAED05 /* Pty.swift */; };
 		B3FFCC5628E2EE9900BAED05 /* Color+HexString.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FFCC5528E2EE9900BAED05 /* Color+HexString.swift */; };
@@ -70,19 +69,18 @@
 		B33B298A28B4A906009CD8D7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B33B298C28B4A906009CD8D7 /* Mio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Mio.entitlements; sourceTree = "<group>"; };
 		B35BCCD028B4ACB200F1779E /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
+		B39FF8E02A78EEAE008199D1 /* nodedotjs.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nodedotjs.svg; sourceTree = "<group>"; };
+		B39FF8E22A78EEE4008199D1 /* android.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = android.svg; sourceTree = "<group>"; };
+		B39FF8E42A78EEF0008199D1 /* vuedotjs.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vuedotjs.svg; sourceTree = "<group>"; };
+		B39FF8E62A78EF00008199D1 /* apple.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = apple.svg; sourceTree = "<group>"; };
+		B39FF8E82A78EF12008199D1 /* react.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = react.svg; sourceTree = "<group>"; };
+		B39FF8EA2A78EF42008199D1 /* gnubash.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = gnubash.svg; sourceTree = "<group>"; };
 		B3BA457628B4AD8D002F11C2 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
 		B3BA457828B4ADCB002F11C2 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		B3BA457C28B4AF38002F11C2 /* Sidebar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
 		B3BA457E28B4B6C7002F11C2 /* SidebarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarItem.swift; sourceTree = "<group>"; };
 		B3BA458128B4B7ED002F11C2 /* ProjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectView.swift; sourceTree = "<group>"; };
 		B3BA458728B4C12B002F11C2 /* TermView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermView.swift; sourceTree = "<group>"; };
-		B3FFCC4228E2DBB100BAED05 /* react-original.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "react-original.svg"; sourceTree = "<group>"; };
-		B3FFCC4428E2DC7700BAED05 /* nodejs-original.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "nodejs-original.svg"; sourceTree = "<group>"; };
-		B3FFCC4628E2DCC300BAED05 /* android-original.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "android-original.svg"; sourceTree = "<group>"; };
-		B3FFCC4828E2DCD800BAED05 /* bash-original.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "bash-original.svg"; sourceTree = "<group>"; };
-		B3FFCC4A28E2DCE500BAED05 /* apple-original.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "apple-original.svg"; sourceTree = "<group>"; };
-		B3FFCC4C28E2DD1C00BAED05 /* vuejs-original.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "vuejs-original.svg"; sourceTree = "<group>"; };
-		B3FFCC4E28E2DD7400BAED05 /* ssh-original.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ssh-original.svg"; sourceTree = "<group>"; };
 		B3FFCC5128E2E58300BAED05 /* LocalProcess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalProcess.swift; sourceTree = "<group>"; };
 		B3FFCC5328E2E5C000BAED05 /* Pty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pty.swift; sourceTree = "<group>"; };
 		B3FFCC5528E2EE9900BAED05 /* Color+HexString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+HexString.swift"; sourceTree = "<group>"; };
@@ -282,13 +280,12 @@
 		B3FFCC4128E2DB9B00BAED05 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B3FFCC4E28E2DD7400BAED05 /* ssh-original.svg */,
-				B3FFCC4C28E2DD1C00BAED05 /* vuejs-original.svg */,
-				B3FFCC4A28E2DCE500BAED05 /* apple-original.svg */,
-				B3FFCC4828E2DCD800BAED05 /* bash-original.svg */,
-				B3FFCC4628E2DCC300BAED05 /* android-original.svg */,
-				B3FFCC4428E2DC7700BAED05 /* nodejs-original.svg */,
-				B3FFCC4228E2DBB100BAED05 /* react-original.svg */,
+				B39FF8EA2A78EF42008199D1 /* gnubash.svg */,
+				B39FF8E82A78EF12008199D1 /* react.svg */,
+				B39FF8E62A78EF00008199D1 /* apple.svg */,
+				B39FF8E42A78EEF0008199D1 /* vuedotjs.svg */,
+				B39FF8E22A78EEE4008199D1 /* android.svg */,
+				B39FF8E02A78EEAE008199D1 /* nodedotjs.svg */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -367,15 +364,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3FFCC4328E2DBB200BAED05 /* react-original.svg in Resources */,
-				B3FFCC4B28E2DCE500BAED05 /* apple-original.svg in Resources */,
 				B33B298B28B4A906009CD8D7 /* Preview Assets.xcassets in Resources */,
-				B3FFCC4528E2DC7700BAED05 /* nodejs-original.svg in Resources */,
-				B3FFCC4928E2DCD800BAED05 /* bash-original.svg in Resources */,
-				B3FFCC4728E2DCC300BAED05 /* android-original.svg in Resources */,
+				B39FF8E72A78EF00008199D1 /* apple.svg in Resources */,
 				B33B298828B4A906009CD8D7 /* Assets.xcassets in Resources */,
-				B3FFCC4F28E2DD7400BAED05 /* ssh-original.svg in Resources */,
-				B3FFCC4D28E2DD1C00BAED05 /* vuejs-original.svg in Resources */,
+				B39FF8E12A78EEAE008199D1 /* nodedotjs.svg in Resources */,
+				B39FF8E52A78EEF0008199D1 /* vuedotjs.svg in Resources */,
+				B39FF8E92A78EF12008199D1 /* react.svg in Resources */,
+				B39FF8EB2A78EF42008199D1 /* gnubash.svg in Resources */,
+				B39FF8E32A78EEE4008199D1 /* android.svg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

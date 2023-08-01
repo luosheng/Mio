@@ -8,10 +8,10 @@
 import Foundation
 import SVGView
 
-let DefaultIcon = "bash"
+let DefaultIcon = "gnubash"
 
 func loadSvgString(_ type: String) -> String? {
-  guard let url = Bundle.main.url(forResource: "\(type)-original", withExtension: "svg"),
+  guard let url = Bundle.main.url(forResource: "\(type)", withExtension: "svg"),
         let data = try? Data(contentsOf: url),
         let string = String(data: data, encoding: .utf8)
   else {
@@ -33,8 +33,16 @@ func loadIcon(_ icon: String?, hexColor: String?) -> SVGView {
   } else {
     destSvg = loadSvgString(DefaultIcon)!
   }
-  if let hexColor = hexColor {
-    destSvg = transformSvgToInactive(destSvg, hexColor: hexColor)
+
+  let view = SVGView(string: destSvg)
+  if let svg = view.svg, let svgGroup = svg as? SVGGroup, let hexColor {
+    svgGroup.contents.forEach { node in
+      if let path = node as? SVGPath {
+        if path.fill != nil {
+          path.fill = SVGColor(hex: hexColor.replacingOccurrences(of: "#", with: ""))
+        }
+      }
+    }
   }
-  return SVGView(string: destSvg)
+  return view
 }
