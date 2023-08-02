@@ -7,6 +7,8 @@
 
 import Foundation
 import SVGView
+import SwiftDraw
+import AppKit
 
 let DefaultIcon = "gnubash"
 
@@ -22,6 +24,14 @@ func loadSvgString(_ type: String) -> String? {
 
 func transformSvgToInactive(_ svg: String, hexColor: String = "#B0B0B0") -> String {
   return svg.replacingOccurrences(of: ##"fill="#\w+""##, with: "fill=\"\(hexColor)\"", options: .regularExpression)
+}
+
+func loadSVGImage(_ type: String?) -> NSImage {
+  guard let type,
+        let svg = NSImage(svgNamed: "\(type).svg") else {
+    return NSImage(svgNamed: "\(DefaultIcon).svg")!
+  }
+  return svg
 }
 
 func loadIcon(_ icon: String?, hexColor: String?) -> SVGView {

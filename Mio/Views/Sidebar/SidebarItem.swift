@@ -13,7 +13,10 @@ struct SidebarItem: View {
 
   var body: some View {
     HStack {
-      SidebarIcon(project: project)
+      Image(nsImage: loadSVGImage(project.icon))
+        .renderingMode(.template)
+        .font(.system(size: 24))
+        .foregroundColor(project.running ? .primary : Color("InactiveText"))
       Text(project.name)
         .font(.headline)
         .fontWeight(.semibold)
