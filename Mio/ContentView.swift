@@ -11,8 +11,10 @@ struct ContentView: View {
   @EnvironmentObject var pref: Preferences
 
   var body: some View {
-    NavigationView {
+    NavigationSplitView {
       Sidebar()
+    } detail: {
+      
     }
     .preferredColorScheme(pref.appearance.toColorScheme())
   }

@@ -13,16 +13,17 @@ struct Sidebar: View {
 
   var body: some View {
     VStack {
-      List {
+      List(selection: $store.selectedProject) {
         ForEach(store.projects) { p in
-          NavigationLink(tag: p, selection: $store.selectedProject, destination: {
+          NavigationLink {
             ProjectView(project: p)
-          }, label: {
+          } label: {
             SidebarItem(project: p)
-          })
+          }
           .contextMenu {
             SidebarItemContextMenuView(project: p)
           }
+          .tag(p)
         }
         .onMove { indexSet, index in
           store.moveProject(from: indexSet, to: index)
