@@ -55,7 +55,11 @@ struct Sidebar: View {
       .overlay(Divider(), alignment: .top)
     }
     .sheet(isPresented: $presentingAddProject) {
-      ProjectDetailView(presented: $presentingAddProject)
+      ProjectDetailView(presented: $presentingAddProject) { p in
+        self.store.projects.append(p)
+        self.store.save()
+      }
+        .environmentObject(Project(name: "", command: ""))
     }
   }
 }

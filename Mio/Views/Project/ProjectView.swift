@@ -12,6 +12,7 @@ struct ProjectView: View {
   @Environment(\.colorScheme) var colorScheme
   @StateObject var project: Project
   @State private var presentingProjectDetail: Bool = false
+  @EnvironmentObject var store: Store
 
   var body: some View {
     VStack(spacing: 0) {
@@ -60,7 +61,11 @@ struct ProjectView: View {
       }
     }
     .sheet(isPresented: $presentingProjectDetail) {
-      ProjectDetailView(presented: $presentingProjectDetail, editing: true, project: project.copy() as! Project)
+      ProjectDetailView(presented: $presentingProjectDetail, editing: true) { p in
+        project.merge(with: p)
+        store.save()
+      }
+        .environmentObject(project.copy() as! Project)
     }
   }
 }

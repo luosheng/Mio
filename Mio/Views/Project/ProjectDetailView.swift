@@ -10,8 +10,9 @@ import SwiftUI
 struct ProjectDetailView: View {
   @Binding var presented: Bool
   var editing: Bool = false
-  @StateObject var project = Project(name: "", command: "")
+  @EnvironmentObject var project: Project
   @EnvironmentObject var store: Store
+  var onFinished: ((Project) -> Void)?
 
   var body: some View {
     VStack {
@@ -48,11 +49,8 @@ struct ProjectDetailView: View {
         Spacer()
 
         Button("Save") {
-          if !editing {
-            self.store.projects.append(project)
-          }
-          self.store.save()
           self.presented = false
+          onFinished?(project)
         }
         .keyboardShortcut(KeyEquivalent.return, modifiers: .command)
         .disabled(project.name == "")

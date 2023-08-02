@@ -115,6 +115,13 @@ class Project: Codable, Hashable, Identifiable, ObservableObject, ProjectCoordin
     }
   }
 
+  func merge(with another: Project) {
+    name = another.name
+    command = another.command
+    directory = another.command
+    environments = another.environments
+  }
+
   // MARK: - ProjectCoordinatorDelegate
 
   func didUpdateRunningState(_ running: Bool) {
@@ -122,10 +129,10 @@ class Project: Codable, Hashable, Identifiable, ObservableObject, ProjectCoordin
   }
 
   func didReceivedDataString(_: String) {}
-  
+
   // MARK: - NSCopying
-  
-  func copy(with zone: NSZone? = nil) -> Any {
+
+  func copy(with _: NSZone? = nil) -> Any {
     return Project(name: name, command: command, directory: directory, environments: environments)
   }
 }
