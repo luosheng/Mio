@@ -54,7 +54,7 @@ struct Sidebar: View {
       .overlay(Divider(), alignment: .top)
     }
     .toolbar {
-      ToolbarItem(placement: .status) {
+      ToolbarItem(placement: .navigation) {
         Button(action: {
           NSApp.keyWindow?.firstResponder?.tryToPerform(#selector(NSSplitViewController.toggleSidebar(_:)), with: nil)
         }) {
