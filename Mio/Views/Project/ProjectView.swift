@@ -60,7 +60,7 @@ struct ProjectView: View {
       }
     }
     .sheet(isPresented: $presentingProjectDetail) {
-      ProjectDetailView(presented: $presentingProjectDetail, editing: true, project: project)
+      ProjectDetailView(presented: $presentingProjectDetail, editing: true, project: project.copy() as! Project)
     }
   }
 }

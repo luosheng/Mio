@@ -8,7 +8,7 @@
 import Combine
 import Foundation
 
-class Project: Codable, Hashable, Identifiable, ObservableObject, ProjectCoordinatorDelegate {
+class Project: Codable, Hashable, Identifiable, ObservableObject, ProjectCoordinatorDelegate, NSCopying {
   @Published var id: UUID
   @Published var name: String
   @Published var command: String
@@ -122,4 +122,10 @@ class Project: Codable, Hashable, Identifiable, ObservableObject, ProjectCoordin
   }
 
   func didReceivedDataString(_: String) {}
+  
+  // MARK: - NSCopying
+  
+  func copy(with zone: NSZone? = nil) -> Any {
+    return Project(name: name, command: command, directory: directory, environments: environments)
+  }
 }
