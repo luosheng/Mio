@@ -54,15 +54,6 @@ struct Sidebar: View {
       }
       .overlay(Divider(), alignment: .top)
     }
-    .toolbar {
-      ToolbarItem(placement: .navigation) {
-        Button(action: {
-          NSApp.keyWindow?.firstResponder?.tryToPerform(#selector(NSSplitViewController.toggleSidebar(_:)), with: nil)
-        }) {
-          Image(systemName: "sidebar.squares.leading")
-        }
-      }
-    }
     .sheet(isPresented: $presentingAddProject) {
       ProjectDetailView(presented: $presentingAddProject)
     }
